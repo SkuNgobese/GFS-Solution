@@ -1,0 +1,74 @@
+﻿@model IEnumerable<GFS.Models.Policies.Deceased>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Deceased</h2>
+
+<table class="table table-bordered table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.causeOfDeath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfDeath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.causeOfDeath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfDeath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.policyNo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.deceasedNo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.deceasedNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.deceasedNo })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,25 @@
+﻿<h1>Gumbi Funeral Services</h1>
+<div align="right">
+    <table>
+        <tr>
+            @using (Html.BeginForm())
+            {
+                <td>Find by Policy Number: </td>
+                <td>@Html.TextBox("searchStr")</td>
+                <td><input type="submit" value="Search" class="btn btn-primary"></td>
+            }
+        </tr>
+    </table>
+</div>
+<br />
+<br />
+<div align="right">
+    <table>
+        @using (Html.BeginForm())
+        {
+            <tr class="col-md-offset-2 col-md-10">
+                <td><input type="button" value="Pay Without Searching" class="btn btn-danger" onclick="@("window.location.href='" + @Url.Action("Create", "Payments") + "'");" /></td>
+            </tr>
+        }
+    </table>
+</div>

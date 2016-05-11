@@ -1,0 +1,95 @@
+﻿@model IEnumerable<GFS.Models.StockFile>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><u>Inventory</u></h2>
+<div align="right">
+    <table>
+        <tr>
+            @using (Html.BeginForm())
+            {
+                <td>Find by Stock Code: </td>
+                <td>@Html.TextBox("SearchString")</td>
+                <td><input type="submit" value="Search" class="btn btn-primary"></td>
+            }
+        </tr>
+    </table>
+</div>
+
+<p>
+    @Html.ActionLink("Add To Stock", "Create")
+</p>
+<table class="table table-bordered table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.stockCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.albumArtUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pricePerItem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sellingPrice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.stockCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.albumArtUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pricePerItem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.costPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sellingPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.stockNumber }) |
+                @Html.ActionLink("Details", "Details", new { id = item.stockNumber }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.stockNumber })
+            </td>
+        </tr>
+    }
+
+</table>

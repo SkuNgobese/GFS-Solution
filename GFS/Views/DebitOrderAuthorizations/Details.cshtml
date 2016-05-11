@@ -1,0 +1,71 @@
+﻿@model GFS.Models.Policies.DebitOrderAuthorization
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><u>Customer Added, Here Are the Plan Details</u></h2>
+<br />
+<br />
+@if (Session["NMember"] != null)
+{
+    <div>@Html.Partial("_NewMember", Session["NMember"])</div>
+}
+@if (Session["Dep"] != null)
+{
+    <div>@Html.Partial("_Dependant", Session["Dep"])</div>
+}
+@if (Session["Ben"] != null)
+{
+    <div>@Html.Partial("_Beneficiary", Session["Ben"])</div>
+}
+@if (Session["Payer"] != null)
+{
+    <div>@Html.Partial("_Payer", Session["Payer"])</div>
+}
+<div>
+    <h4>Debit Order Authorization</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.NewMembers.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewMembers.title)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Payers.paymentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payers.paymentType)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commenceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commenceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+    </dl>
+    <div>
+        <input type="button" value="Add Another Policy" class="btn btn-success" onclick="@("window.location.href='" + @Url.Action("Create", "NewMembers") + "'");" />
+    </div>
+    <br />
+    <div>
+        <input type="button" value="Done" class="btn btn-success btn-lg" onclick="@("window.location.href='" + @Url.Action("Blank", "Home") + "'");" />
+    </div>
+</div>

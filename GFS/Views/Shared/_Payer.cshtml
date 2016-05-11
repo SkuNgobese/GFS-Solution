@@ -1,0 +1,100 @@
+﻿@model GFS.Models.Policies.Payer
+
+<div>
+    <h4>Payer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NewMembers.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewMembers.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paymentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paymentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.relation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.relation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bankName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bankName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.accNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.branchcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.branchcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.branchName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.branchName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.accountType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accountType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.payerNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

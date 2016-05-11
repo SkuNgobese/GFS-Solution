@@ -1,0 +1,102 @@
+﻿@model IEnumerable<GFS.Models.Policies.Payer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Payers</h2>
+
+<table class="table table-bordered table-responsive">
+    <tr>
+        
+        @*<th>
+            @Html.DisplayNameFor(model => model.paymentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.initialPremium)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idNo)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.relation)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.bankName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.accNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.branchcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.branchName)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.accountType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.NewMembers.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paymentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.initialPremium)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idNo)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.relation)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.bankName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.accNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.branchcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.branchName)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.accountType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.policyNo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.payerNo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.payerNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.payerNo })
+            </td>
+        </tr>
+    }
+
+</table>

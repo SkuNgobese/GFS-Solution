@@ -1,0 +1,86 @@
+﻿@model IEnumerable<GFS.Models.Policies.Dependant>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dependants</h2>
+
+<table class="table table-bordered table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.coveredby)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dOb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.relationship)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.policyPlan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.coveredby)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.IdNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dOb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.relationship)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.policyPlan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.policyNo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.depNo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.depNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.depNo })
+            </td>
+        </tr>
+    }
+
+</table>

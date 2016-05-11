@@ -1,0 +1,57 @@
+﻿@model GFS.Models.Policies.DebitOrderAuthorization
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DebitOrderAuthorization</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NewMembers.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewMembers.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payers.paymentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payers.paymentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commenceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commenceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

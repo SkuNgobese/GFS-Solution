@@ -1,0 +1,90 @@
+﻿@model GFS.Models.Payment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.policyNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.plan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dueAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dueAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.outstandingAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.outstandingAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datePayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datePayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cashierName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cashierName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.branch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.branch)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <input type="button" value="Print Slip" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Blank", "Home") + "'");" />
+</div>

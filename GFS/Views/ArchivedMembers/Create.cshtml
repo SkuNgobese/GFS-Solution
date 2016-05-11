@@ -1,0 +1,178 @@
+﻿@model GFS.Models.Policies.ArchivedMember
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Member To Archive</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.policyNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["PolicyNo"].ToString()               
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["title"].ToString()                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["fName"].ToString()                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["lName"].ToString()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["IdNo"].ToString()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dOb, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["dOb"].ToString()    
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["age"].ToString()   
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["gender"].ToString()   
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.maritalStat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["maritalStat"].ToString()  
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.telNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["telNo"].ToString() 
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cellNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["cellNo"].ToString()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["CustEmail"].ToString()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fascimileNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["fascimileNo"].ToString()  
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.physicalAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["physicalAddress"].ToString()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.postalAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["postalAddress"].ToString()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dateAdded, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["dateAdded"].ToString()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Policyplan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["Policyplan"].ToString()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Premium, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["Premium"].ToString()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                    @Session["Category"].ToString()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.reason, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.reason, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.reason, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Archive" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+    if (Session["responce1"] != null)
+    {
+        <script>alert("@Session["responce1"].ToString()");</script>
+    }
+    @Html.ValidationSummary()
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

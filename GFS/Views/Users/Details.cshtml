@@ -1,0 +1,91 @@
+﻿@model GFS.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RememberMe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RememberMe)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.userid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

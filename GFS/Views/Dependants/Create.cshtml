@@ -1,0 +1,163 @@
+﻿@model GFS.Models.Policies.Dependant
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Dependant</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.coveredby, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @if (Session["owner"] != null)
+                {
+                    @Session["owner"].ToString()
+                }
+                else if (Session["owner"] == null)
+                {
+                    @Html.EditorFor(model => model.coveredby, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.coveredby, "", new { @class = "text-danger" })
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.fName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.lName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.lName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.IdNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IdNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dOb, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.dOb, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dOb, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.relationship, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.DropDownListFor(model => model.relationship, ViewBag.rlist as List<SelectListItem>, "-Select-")
+                @Html.ValidationMessageFor(model => model.relationship, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.policyPlan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @if (Session["polplan"] != null)
+                {
+                    @Session["polplan"].ToString()
+                }
+                else if (Session["polplan"] == null)
+                {
+                    @Html.EditorFor(model => model.policyPlan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.policyPlan, "", new { @class = "text-danger" })
+                }
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Add As Beneficiary?")
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.CheckBox("AsBeneficiary")
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Add Another Dependant?")
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.CheckBox("AddAnotherDep")
+                </div>
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.asBeneficiary, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.asBeneficiary)
+                    @Html.ValidationMessageFor(model => model.asBeneficiary, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.addAnotherDep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.addAnotherDep)
+                    @Html.ValidationMessageFor(model => model.addAnotherDep, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Dependant" class="btn btn-success" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Forgot Something" class="btn btn-danger" onclick="history.go(-1);">|-|<input type="button" value="Skip" class="btn btn-warning" onclick="@("window.location.href='" + @Url.Action("Create", "Beneficiaries") + "'");" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Add Another Dependant", "Create")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

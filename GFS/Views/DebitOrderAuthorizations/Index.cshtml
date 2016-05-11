@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GFS.Models.Policies.DebitOrderAuthorization>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Authorizations</h2>
+
+<table class="table table-bordered table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NewMembers.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payers.paymentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.commenceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewMembers.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payers.paymentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.commenceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.debitAuthNo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.debitAuthNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.debitAuthNo })
+            </td>
+        </tr>
+    }
+
+</table>

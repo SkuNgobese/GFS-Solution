@@ -1,0 +1,60 @@
+﻿@model GFS.Models.Policies.Beneficiary
+
+<div>
+    <h4>Beneficiary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.relation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.relation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.split)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.split)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.policyNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.beneficiaryNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

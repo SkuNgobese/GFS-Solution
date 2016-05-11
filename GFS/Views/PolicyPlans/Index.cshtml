@@ -1,0 +1,90 @@
+﻿@model IEnumerable<GFS.Models.PolicyPlan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Policy Plans</h2>
+
+<div>
+    <input type="button" value="Add New Plan" class="btn btn-success" onclick="@("window.location.href='" + @Url.Action("Create", "PolicyPlans") + "'");" />
+</div>
+<br />
+<table class="table table-bordered table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policyType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.minAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.maxAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlanPremium)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.benefit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.payout)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dependantPrem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TandCs)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.policyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.policyType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.minAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maxAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanPremium)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.benefit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.payout)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dependantPrem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TandCs)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PolicyPlanNo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PolicyPlanNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PolicyPlanNo })
+            </td>
+        </tr>
+    }
+
+</table>

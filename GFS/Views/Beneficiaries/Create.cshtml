@@ -1,0 +1,145 @@
+﻿@model GFS.Models.Policies.Beneficiary
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Beneficiary</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.coveredby, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @if (Session["owner"] != null)
+                {
+                    @Session["owner"].ToString()
+                }
+                else if (Session["owner"] == null)
+                {
+                    @Html.EditorFor(model => model.coveredby, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.coveredby, "", new { @class = "text-danger" })
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+            @if (Session["Id"] != null)
+                            {
+            @Session["Id"].ToString()
+            }
+            else if (Session["Id"] == null)
+            {
+                @Html.EditorFor(model => model.idNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.idNo, "", new { @class = "text-danger" })
+            }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.firstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+            @if (Session["finame"] != null)
+                            {
+            @Session["finame"].ToString()
+            }
+            else if (Session["finame"] == null)
+            {
+                @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
+            }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+            @if (Session["laname"] != null)
+                            {
+            @Session["laname"].ToString()
+            }
+            else if (Session["laname"] == null)
+            {
+                @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
+            }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.relation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+            @if (Session["relation"] != null)
+                            {
+            @Session["relation"].ToString()
+            }
+            else if (Session["relation"] == null)
+            {
+                @Html.DropDownListFor(model => model.relation, ViewBag.relist as List<SelectListItem>, "-Select-")
+                @Html.ValidationMessageFor(model => model.relation, "", new { @class = "text-danger" })
+            }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.split, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.split, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.split, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.policyPlan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @if (Session["polplan"] != null)
+                {
+                    @Session["polplan"].ToString()
+                }
+                else if (Session["polplan"] == null)
+                {
+                    @Html.EditorFor(model => model.policyPlan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.policyPlan, "", new { @class = "text-danger" })
+                }
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Add Another Beneficiary?")
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.CheckBox("AddAnotherBen")
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Beneficiary" class="btn btn-success" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Forgot Something" class="btn btn-danger" onclick="history.go(-1);">|-|<input type="button" value="Skip" class="btn btn-warning" onclick="@("window.location.href='" + @Url.Action("Create", "Payers") + "'");" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Add Another Beneficiary", "Create")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

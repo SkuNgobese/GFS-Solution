@@ -1,0 +1,83 @@
+﻿@model GFS.Models.Policies.Deceased
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Deceased</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.causeOfDeath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.causeOfDeath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfDeath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfDeath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.policyNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.deceasedNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
