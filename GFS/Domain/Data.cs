@@ -37,6 +37,8 @@ namespace GFS.Domain
             menu.Add(new Navbar { Id = 3, nameOption = "Policy Holders", controller = "NewMembers", action = "Index", estatus = true, isParent = false, parentId = 2 });
             menu.Add(new Navbar { Id = 4, nameOption = "Dependants", controller = "Dependants", action = "Index", estatus = true, isParent = false, parentId = 2 });
             menu.Add(new Navbar { Id = 5, nameOption = "Payers", controller = "Payers", action = "Index", estatus = true, isParent = false, parentId = 2 });
+            menu.Add(new Navbar { Id = 18, nameOption = "Beneficiaries", controller = "Beneficiaries", action = "Index", estatus = true, isParent = false, parentId = 2 });
+            menu.Add(new Navbar { Id = 19, nameOption = "Authorizations", controller = "DebitOrderAuthorizations", action = "Index", estatus = true, isParent = false, parentId = 2 });
             menu.Add(new Navbar { Id = 6, nameOption = "Stock File", controller = "StockFiles", action = "Index", imageClass = "fa fa-edit fa-fw", estatus = true, isParent = false, parentId = 0 });
             menu.Add(new Navbar { Id = 7, nameOption = "Manage Your Data", imageClass = "fa fa-wrench fa-fw", estatus = true, isParent = true, parentId = 0 });
             menu.Add(new Navbar { Id = 8, nameOption = "Add Banks", controller = "Banks", action = "Create", estatus = true, isParent = false, parentId = 7 });

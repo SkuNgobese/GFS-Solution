@@ -13,6 +13,7 @@ namespace GFS.Models.Policies
         [Key]
         public int payerNo { get; set; }
 
+        [Required]
         [DisplayName("Payment Method")]
         public string paymentType { get; set; }
 

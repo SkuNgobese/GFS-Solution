@@ -61,26 +61,21 @@
             </div>
         </div>
 
-        @if (Session["iniPrem"] != null)
-        {
-            <div class="form-group">
-                @Html.LabelFor(model => model.dueAmount, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-3">
-                    @Session["iniPrem"].ToString()
-                </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.dueAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+            @if (Session["iniPrem"] != null)
+            {
+                @Session["iniPrem"].ToString()
+            }
+            else if (Session["iniPrem"] == null)
+            {
+                @Html.EditorFor(model => model.dueAmount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dueAmount, "", new { @class = "text-danger" })
+            }
             </div>
-        }
-        else if (Session["iniPrem"] == null)
-        {
-            <div class="form-group">
-                @Html.LabelFor(model => model.dueAmount, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-3">
-                    @Html.EditorFor(model => model.dueAmount, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.dueAmount, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        }
-
+        </div>  
         <div class="form-group">
             @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
@@ -142,16 +137,23 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.emailSlip, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.emailSlip)
+                    @Html.ValidationMessageFor(model => model.emailSlip, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="-Capture-" class="btn btn-success btn-lg" />
             </div>
         </div>
     </div>
+    
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

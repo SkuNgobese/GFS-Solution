@@ -39,12 +39,28 @@ namespace GFS.Controllers.Policies
             return View(newmembers);
 
         }
-        //public ActionResult Index()
+        //[HttpPost]
+        //public List<NewMember> search(string policynumber)
         //{
-        //    return View(db.NewMembers.ToList());
-        //}
+        //    var member = db.NewMembers.ToList().FindAll(s => s.policyNo == policynumber);
+        //    var dep = db.Dependants.ToList().FindAll(p => p.policyNo == policynumber);        
+        //    if (!String.IsNullOrEmpty(policynumber))
+        //    {               
+        //        foreach(NewMember n in member)
+        //        {
+        //            foreach(Dependant d in dep)
+        //            {
+        //                List<NewMember> newm=(from m in member
+        //                 join de in dep
+        //                 on n.policyNo equals d.policyNo
+        //                 where n.policyNo == policynumber
+        //                 select de).ToList();
+        //            }                    
+        //        }
+        //    }
 
-        // GET: NewMembers/Details/5
+        //    return member;
+        //}
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -84,16 +100,28 @@ namespace GFS.Controllers.Policies
 
             if (polNo != null)
             {
-                Session["responce"] = "Member Exists, Check The Policy Number!";
+                Session["responce"] = "Member Exists, Check The Policy Number! This one is Assigned to: " + polNo.fName + " " + polNo.lName;
                 return RedirectToAction("Create");
             }
             if (idno != null)
             {
-                Session["responce"] = "Member Exists, Check ID Number!";
+                Session["responce"] = "Member Exists, Check ID Number! This one Belongs to: "+idno.fName+" "+idno.lName;
                 return RedirectToAction("Create");
             }
             else if (ModelState.IsValid)
             {
+                if (newMember.IdNo != null)
+                {
+                    int year = Convert.ToInt16(newMember.IdNo.Substring(0, 2));
+                    int month = Convert.ToInt16(newMember.IdNo.Substring(2, 2));
+                    int day = Convert.ToInt16(newMember.IdNo.Substring(4, 2));
+                    int gender = Convert.ToInt16(newMember.IdNo.Substring(7, 1));
+                    newMember.dOb = Convert.ToDateTime(day + "-" + month + "-" + year);
+                }
+                if (newMember.dOb != null)
+                {
+                    newMember.age = (DateTime.Now.Year) - (newMember.dOb.Year);
+                }
                 if (newMember.Category == "Single Member")
                 {
                     if (newMember.Policyplan == "Plan A")
@@ -110,7 +138,7 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 320;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             Session["responce"] = "Cannot add person over 84 years from this plan!";
                             ModelState.Clear();
@@ -118,7 +146,7 @@ namespace GFS.Controllers.Policies
                         }
                     }
                 }
-                else if (newMember.Category == "Single Member")
+                if (newMember.Category == "Single Member")
                 {
                     if (newMember.Policyplan == "Plan B")
                     {
@@ -134,13 +162,13 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 200;
                         }
-                        else
+                        else if(newMember.age > 84)
                         {
                             newMember.Premium = 330;
                         }
                     }
                 }
-                else if (newMember.Category == "Single Member")
+                if (newMember.Category == "Single Member")
                 {
                     if (newMember.Policyplan == "Plan C1")
                     {
@@ -156,13 +184,13 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 131;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             newMember.Premium = 218;
                         }
                     }
                 }
-                else if (newMember.Category == "Single Member")
+                if (newMember.Category == "Single Member")
                 {
                     if (newMember.Policyplan == "Plan C2")
                     {
@@ -178,13 +206,13 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 192;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             newMember.Premium = 322;
                         }
                     }
                 }
-                else if (newMember.Category == "Single Member")
+                if (newMember.Category == "Single Member")
                 {
                     if (newMember.Policyplan == "Plan C3")
                     {
@@ -200,7 +228,7 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 252;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             Session["responce"] = "Cannot add person over 84 years from this plan!";
                             ModelState.Clear();
@@ -224,7 +252,7 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 386;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             Session["responce"] = "Cannot add person over 84 years from this plan!";
                             ModelState.Clear();
@@ -232,7 +260,7 @@ namespace GFS.Controllers.Policies
                         }
                     }
                 }
-                else if (newMember.Category == "Single Parent")
+                if (newMember.Category == "Single Parent")
                 {
                     if (newMember.Policyplan == "Plan B")
                     {
@@ -248,13 +276,13 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 260;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             newMember.Premium = 400;
                         }
                     }
                 }
-                else if (newMember.Category == "Single Parent")
+                if (newMember.Category == "Single Parent")
                 {
                     if (newMember.Policyplan == "Plan C1")
                     {
@@ -270,13 +298,13 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 170;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             newMember.Premium = 264;
                         }
                     }
                 }
-                else if (newMember.Category == "Single Parent")
+                if (newMember.Category == "Single Parent")
                 {
                     if (newMember.Policyplan == "Plan C2")
                     {
@@ -292,13 +320,13 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 242;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             newMember.Premium = 391;
                         }
                     }
                 }
-                else if (newMember.Category == "Single Parent")
+                if (newMember.Category == "Single Parent")
                 {
                     if (newMember.Policyplan == "Plan C3")
                     {
@@ -314,7 +342,7 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 319;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             Session["responce"] = "Cannot add person over 84 years from this plan!";
                             ModelState.Clear();
@@ -338,7 +366,7 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 530;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             Session["responce"] = "Cannot add person over 84 years from this plan!";
                             ModelState.Clear();
@@ -346,7 +374,7 @@ namespace GFS.Controllers.Policies
                         }
                     }
                 }
-                else if (newMember.Category == "Immediate Family")
+                if (newMember.Category == "Immediate Family")
                 {
                     if (newMember.Policyplan == "Plan B")
                     {
@@ -362,13 +390,13 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 350;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             newMember.Premium = 500;
                         }
                     }
                 }
-                else if (newMember.Category == "Immediate Family")
+                if (newMember.Category == "Immediate Family")
                 {
                     if (newMember.Policyplan == "Plan C1")
                     {
@@ -384,13 +412,13 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 220;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             newMember.Premium = 320;
                         }
                     }
                 }
-                else if (newMember.Category == "Immediate Family")
+                if (newMember.Category == "Immediate Family")
                 {
                     if (newMember.Policyplan == "Plan C2")
                     {
@@ -406,13 +434,13 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 328;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             newMember.Premium = 475;
                         }
                     }
                 }
-                else if (newMember.Category == "Immediate Family")
+                if (newMember.Category == "Immediate Family")
                 {
                     if (newMember.Policyplan == "Plan C3")
                     {
@@ -428,7 +456,7 @@ namespace GFS.Controllers.Policies
                         {
                             newMember.Premium = 434;
                         }
-                        else
+                        else if (newMember.age > 84)
                         {
                             Session["responce"] = "Cannot add person over 84 years from this plan!";
                             ModelState.Clear();
@@ -436,16 +464,13 @@ namespace GFS.Controllers.Policies
                         }
                     }
                 }
-                //if(newMember.IdNo!=null)
-                //{
-                //    int gnum=Convert.ToInt16(newMember.IdNo.Substring(6, 1));
-                //    if (gnum > 4)
-                //    {
-                //        newMember.gender = "Male";
-                //    }
-                //    else
-                //        newMember.gender = "Female";
-                //}
+                if(newMember.age<18)
+                {
+                    Session["responce"] = "Cannot add person under the age of 18!";
+                    ModelState.Clear();
+                    return RedirectToAction("Create");
+                }
+                               
                 newMember.dateAdded = DateTime.Now;
                 db.NewMembers.Add(newMember);
                 db.SaveChanges();
@@ -469,17 +494,21 @@ namespace GFS.Controllers.Policies
                     Session["lname"] = newMember.lName;
                     Session["idnum"] = newMember.IdNo;
                     Session["pay"] = "Self Payer";
-                }
-                    
-                if (newMember.addDep == true)
+                }               
+                if (newMember.Category == "Single Member")
                 {
-                    return RedirectToAction("Create", "Dependants");
-                }
-                else if (newMember.Category == "Single Member")
-                {
+                    if (newMember.addDep == true)
+                    {
+                        return RedirectToAction("Create", "Payers");
+                    }
+                    else
                     return RedirectToAction("Create", "Payers");
                 }
                 else if (newMember.Category == "Immediate Family")
+                {
+                    return RedirectToAction("Create", "Dependants");
+                }
+                else if (newMember.addDep == true)
                 {
                     return RedirectToAction("Create", "Dependants");
                 }

@@ -17,7 +17,7 @@ namespace GFS.Models.Policies
 
         [Required]
         [DisplayName("Commence Date:")]
-        [DataType(DataType.DateTime), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime commenceDate { get; set; }
 
         [Required]

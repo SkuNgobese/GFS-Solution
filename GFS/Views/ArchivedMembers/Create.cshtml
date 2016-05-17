@@ -18,133 +18,190 @@
         <div class="form-group">
             @Html.LabelFor(model => model.policyNo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                    @Session["PolicyNo"].ToString()               
+                @if(Session["PolicyNo"]!=null)
+                {
+                    @Session["PolicyNo"].ToString()
+                }                                  
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                    @Session["title"].ToString()                
+                @if (Session["title"]!=null)
+                {
+                    @Session["title"].ToString()
+                }                                   
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.fName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                    @Session["fName"].ToString()                
+                @if (Session["fName"]!=null)
+                {
+                    @Session["fName"].ToString()
+                }                                   
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.lName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
+                @if (Session["lName"]!=null)
+                {
                     @Session["lName"].ToString()
+                }                   
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.IdNo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
+                @if(Session["IdNo"]!=null)
+                {
                     @Session["IdNo"].ToString()
+                }                   
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.dOb, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                    @Session["dOb"].ToString()    
+                @if (Session["dOb"]!=null)
+                {
+                    @Session["dOb"].ToString()
+                }                       
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.age, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                    @Session["age"].ToString()   
+                @if (Session["age"]!=null)
+                {
+                    @Session["age"].ToString()
+                }                      
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                    @Session["gender"].ToString()   
+                @if (Session["gender"]!=null)
+                {
+                    @Session["gender"].ToString()
+                }                      
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.maritalStat, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                    @Session["maritalStat"].ToString()  
+                @if (Session["maritalStat"]!=null)
+                {
+                    @Session["maritalStat"].ToString()
+                } 
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.telNo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                    @Session["telNo"].ToString() 
+                @if (Session["telNo"]!=null)
+                {
+                    @Session["telNo"].ToString()
+                }                    
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.cellNo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
+                @if (Session["cellNo"]!=null)
+                {
                     @Session["cellNo"].ToString()
+                }                    
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.CustEmail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
+                @if (Session["CustEmail"]!=null)
+                {
                     @Session["CustEmail"].ToString()
+                }                   
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.fascimileNo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                    @Session["fascimileNo"].ToString()  
+                @if (Session["fascimileNo"]!=null)
+                {
+                    @Session["fascimileNo"].ToString()
+                }                     
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.physicalAddress, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
+                @if (Session["physicalAddress"]!=null)
+                {
                     @Session["physicalAddress"].ToString()
+                }                   
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.postalAddress, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
+                @if (Session["postalAddress"]!=null)
+                {
                     @Session["postalAddress"].ToString()
+                }                    
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.dateAdded, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
+                @if (Session["dateAdded"]!=null)
+                {
                     @Session["dateAdded"].ToString()
+                }                    
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Policyplan, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
+                @if (Session["Policyplan"]!=null)
+                {
                     @Session["Policyplan"].ToString()
+                }                    
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Premium, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
+                @if (Session["Premium"]!=null)
+                {
                     @Session["Premium"].ToString()
+                }                    
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
+                @if (Session["Category"]!=null)
+                {
                     @Session["Category"].ToString()
+                }                   
             </div>
         </div>
 

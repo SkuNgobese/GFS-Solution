@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.dOb, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
                 @Html.EditorFor(model => model.dOb, new { htmlAttributes = new { @class = "form-control" } })
@@ -68,21 +68,13 @@
                 @Html.EditorFor(model => model.age, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.relationship, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
                 @Html.DropDownListFor(model => model.relationship, ViewBag.rlist as List<SelectListItem>, "-Select-")
                 @Html.ValidationMessageFor(model => model.relationship, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -98,30 +90,10 @@
                     @Html.EditorFor(model => model.policyPlan, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.policyPlan, "", new { @class = "text-danger" })
                 }
-
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("Add As Beneficiary?")
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.CheckBox("AsBeneficiary")
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.Label("Add Another Dependant?")
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.CheckBox("AddAnotherDep")
-                </div>
-            </div>
-        </div>
-
-        @*<div class="form-group">
             @Html.LabelFor(model => model.asBeneficiary, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -139,7 +111,7 @@
                     @Html.ValidationMessageFor(model => model.addAnotherDep, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -152,6 +124,11 @@
             </div>
         </div>
     </div>
+    if (Session["responce4"] != null)
+    {
+        <script>alert("@Session["responce4"].ToString()");</script>
+    }
+    @Html.ValidationSummary()
 }
 
 <div>

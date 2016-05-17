@@ -23,3 +23,8 @@
         }
     </table>
 </div>
+@if (Session["responce3"] != null)
+{
+    <script>alert("@Session["responce3"].ToString()");</script>
+}
+@Html.ValidationSummary()

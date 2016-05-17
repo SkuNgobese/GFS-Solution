@@ -55,7 +55,7 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "beneficiaryNo,coveredby,idNo,firstName,lastName,relation,split,policyPlan,policyNo")] Beneficiary beneficiary,bool addAnotherBen)
+        public ActionResult Create([Bind(Include = "beneficiaryNo,coveredby,idNo,firstName,lastName,relation,split,policyPlan,addAnotherBen,policyNo")] Beneficiary beneficiary)
         {
             //if (ModelState.IsValid)
             //{
@@ -82,20 +82,24 @@ namespace GFS.Controllers.Policies
                 beneficiary.policyPlan = Session["polplan"].ToString();
                 beneficiary.policyNo = (Session["PolicyNo"]).ToString();
                 db.Beneficiaries.Add(beneficiary);
-                if (addAnotherBen == true)
+                db.SaveChanges();
+                Session["finame"] = null;
+                Session["laname"] = null;
+                Session["Id"] = null;
+                Session["relation"] = null;
+                if (beneficiary.addAnotherBen == true)
                 {
                     Session["PolicyNo"] = beneficiary.policyNo;
                 }
-                db.SaveChanges();
-                if(beneficiary!=null)
+                if (beneficiary != null)
                 {
                     Session["Ben"] = beneficiary;
-                }               
-                if (addAnotherBen == true)
+                }
+                if (beneficiary.addAnotherBen == true)
                 {
                     return RedirectToAction("Create", "Beneficiaries");
                 }
-                else if (addAnotherBen == true)
+                else if (beneficiary.addAnotherBen == true)
                 {
                     return RedirectToAction("Create", "Payers");
                 }

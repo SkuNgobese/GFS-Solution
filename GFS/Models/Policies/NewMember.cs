@@ -29,6 +29,7 @@ namespace GFS.Models.Policies
         [DisplayName("Last Name:")]
         public string lName { get; set; }
 
+        [Required]
         [DisplayName("ID Number:")]
         [StringLength(13, ErrorMessage = "ID No. Must Be 13 Digits Long", MinimumLength = 13)]
         [RegularExpression(@"^\d+$", ErrorMessage = "Please enter valid ID No.")]
@@ -36,7 +37,6 @@ namespace GFS.Models.Policies
 
         [DisplayName("Date of Birth:")]
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        //[RegularExpression("dd / MM / yyyy", ErrorMessage = "Date is dd-MM-yyyy.")]
         public DateTime dOb { get; set; }
 
         [Required]

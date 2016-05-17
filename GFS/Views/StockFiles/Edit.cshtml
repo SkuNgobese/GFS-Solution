@@ -50,8 +50,8 @@
             @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
                 @Html.DropDownListFor(model => model.status, new[]{
-                    new SelectListItem(){Text="Sales",Value="Sales"},
-                    new SelectListItem(){Text="Hiring",Value="Hiring"},
+                    new SelectListItem(){Text="For Sales",Value="For Sales"},
+                    new SelectListItem(){Text="For Hire",Value="For Hire"},
 
                }, "-select-")
                 @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })

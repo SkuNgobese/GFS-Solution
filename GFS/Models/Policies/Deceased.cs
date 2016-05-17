@@ -39,11 +39,12 @@ namespace GFS.Models.Policies
 
         [Required]
         [DisplayName("Cause Of Death:")]
+        [DataType(DataType.MultilineText)]
         public string causeOfDeath { get; set; }
 
         [Required]
         [DisplayName("Date Of Death:")]
-        [DataType(DataType.DateTime), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfDeath { get; set; }
 
         [DisplayName("Policy No:")]

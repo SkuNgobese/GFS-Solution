@@ -10,9 +10,6 @@
 <table class="table table-bordered table-responsive">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NewMembers.title)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Payers.paymentType)
         </th>
         <th>
@@ -21,15 +18,15 @@
         <th>
             @Html.DisplayNameFor(model => model.amount)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewMembers.title)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Payers.paymentType)
             </td>
@@ -38,6 +35,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.policyNo)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.debitAuthNo }) |

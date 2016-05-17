@@ -1,7 +1,7 @@
 ﻿@model GFS.Models.Policies.NewMember
 
 <div>
-    <h4>NewMember</h4>
+    <h4>Details Of The Holder</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -132,13 +132,13 @@
             @Html.DisplayFor(model => model.Policyplan)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Premium)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Premium)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Category)
@@ -150,7 +150,7 @@
 
     </dl>
 </div>
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.policyNo }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

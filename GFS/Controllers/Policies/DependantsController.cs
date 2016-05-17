@@ -55,56 +55,171 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,age,relationship,amount,policyPlan,policyNo")] Dependant dependant,bool asBeneficiary, bool addAnotherDep)
+        public ActionResult Create([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,age,relationship,amount,policyPlan,asBeneficiary,addAnotherDep,policyNo")] Dependant dependant)
         {
+            Dependant idno = db.Dependants.ToList().Find(x => x.IdNo == dependant.IdNo);
+            if (idno != null)
+            {
+                Session["responce4"] = "Dependant Already Exists, Check ID Number! Covered under: "+idno.coveredby;
+                return RedirectToAction("Create");
+            }
             //if (ModelState.IsValid)
-            //{ 
-                if (Session["owner"]!=null)
+            //{
+            
+                else if (Session["owner"] != null)
                 {
                     dependant.coveredby = (Session["owner"]).ToString();
                 }
-                if (Session["polplan"]!=null)
+                if (Session["polplan"] != null)
                 {
                     dependant.policyPlan = (Session["polplan"]).ToString();
                 }
-                if (Session["PolicyNo"]!=null)
+                if (Session["PolicyNo"] != null)
                 {
-                    dependant.policyNo = (Session["PolicyNo"]).ToString(); 
-                }                                
-                db.Dependants.Add(dependant);                
+                    dependant.policyNo = (Session["PolicyNo"]).ToString();
+                }
+                if (dependant.IdNo != null)
+                {
+                    int year = Convert.ToInt16(dependant.IdNo.Substring(0, 2));
+                    int month = Convert.ToInt16(dependant.IdNo.Substring(2, 2));
+                    int day = Convert.ToInt16(dependant.IdNo.Substring(4, 2));
+                    int gender = Convert.ToInt16(dependant.IdNo.Substring(7, 1));
+                    dependant.dOb = Convert.ToDateTime(day + "-" + month + "-" + year);
+                }
+                if (dependant.dOb != null)
+                {
+                    dependant.age = (DateTime.Now.Year) - (dependant.dOb.Year);
+                }
+                if (dependant.policyPlan == "Plan A")
+                {
+                    if (dependant.age <= 64)
+                    {
+                        dependant.amount = 80;
+                    }
+                    else if (dependant.age <= 74)
+                    {
+                        dependant.amount = 160;
+                    }
+                    else if (dependant.age <= 84)
+                    {
+                        dependant.amount = 310;
+                    }
+                    else
+                    {
+                        Session["responce4"] = "Cannot add person over 84 years from this plan!";
+                        return View("Create");
+                    }
+                }
+                if (dependant.policyPlan == "Plan B")
+                {
+                    if (dependant.age <= 64)
+                    {
+                        dependant.amount = 60;
+                    }
+                    else if (dependant.age <= 74)
+                    {
+                        dependant.amount = 130;
+                    }
+                    else if (dependant.age <= 84)
+                    {
+                        dependant.amount = 170;
+                    }
+                    else
+                    {
+                        dependant.amount = 280;
+                    }
+                }
+                if (dependant.policyPlan == "Plan C1")
+                {
+                    if (dependant.age <= 64)
+                    {
+                        dependant.amount = 46;
+                    }
+                    else if (dependant.age <= 74)
+                    {
+                        dependant.amount = 82;
+                    }
+                    else if (dependant.age <= 84)
+                    {
+                        dependant.amount = 109;
+                    }
+                    else
+                    {
+                        dependant.amount = 200;
+                    }
+                }
+                if (dependant.policyPlan == "Plan C2")
+                {
+                    if (dependant.age <= 64)
+                    {
+                        dependant.amount = 64;
+                    }
+                    else if (dependant.age <= 74)
+                    {
+                        dependant.amount = 117;
+                    }
+                    else if (dependant.age <= 84)
+                    {
+                        dependant.amount = 158;
+                    }
+                    else
+                    {
+                        dependant.amount = 234;
+                    }
+                }
+                if (dependant.policyPlan == "Plan C3")
+                {
+                    if (dependant.age <= 64)
+                    {
+                        dependant.amount = 82;
+                    }
+                    else if (dependant.age <= 74)
+                    {
+                        dependant.amount = 153;
+                    }
+                    else if (dependant.age <= 84)
+                    {
+                        dependant.amount = 207;
+                    }
+                    else
+                    {
+                        Session["responce4"] = "Cannot add person over 84 years from this plan!";
+                        return View("Create");
+                    }
+                }
+                else if (dependant.age <= 18 || dependant.relationship == "Spouse")
+                {
+                    dependant.amount = 0;
+                }
+                db.Dependants.Add(dependant);
                 db.SaveChanges();
                 if (dependant != null)
                 {
                     Session["Dep"] = dependant;
                 }
-                if ((Session["prem"])!=null)
-                {
-                    Session["addamount"] = dependant.amount + Convert.ToDouble(Session["prem"]);
-                }
-                if (addAnotherDep == true)
-                {
-                    //Session["owner"] = dependant.coveredby;
-                    //Session["polplan"] = dependant.policyPlan;
-                    //Session["PolicyNo"] = dependant.policyNo;
-                    return RedirectToAction("Create", "Dependants");
-                }
-                else if(addAnotherDep == false)
-                {
-                    return RedirectToAction("Create", "Beneficiaries");
-                }
-                if (asBeneficiary == true)
+                if (dependant.asBeneficiary == true)
                 {
                     Session["finame"] = dependant.fName;
                     Session["laname"] = dependant.lName;
                     Session["Id"] = dependant.IdNo;
                     Session["relation"] = dependant.relationship;
-                    //Session["plan"] = dependant.policyPlan;
-                    //Session["PolicyNo"] = dependant.policyNo;
                 }
-                
-                
+                if (dependant.asBeneficiary == false)
+                {
+                    Session["finame"] = null;
+                    Session["laname"] = null;
+                    Session["Id"] = null;
+                    Session["relation"] = null;
+                }
+                if (dependant.addAnotherDep == true)
+                {
+                    return RedirectToAction("Create", "Dependants");
+                }
+                else if (dependant.addAnotherDep == false)
+                {
+                    return RedirectToAction("Create", "Beneficiaries");
+                }
             //}
-
               return RedirectToAction("Create", "Beneficiaries");
         }
 
@@ -128,7 +243,7 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,age,relationship,amount,policyPlan,policyNo")] Dependant dependant)
+        public ActionResult Edit([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,age,relationship,amount,policyPlan,asBeneficiary,addAnotherDep,policyNo")] Dependant dependant)
         {
             if (ModelState.IsValid)
             {

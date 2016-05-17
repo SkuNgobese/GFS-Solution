@@ -87,7 +87,8 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.stockNumber }) |
                 @Html.ActionLink("Details", "Details", new { id = item.stockNumber }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.stockNumber })
+               @if (item.quantity == 0)
+               { @Html.ActionLink("Delete", "Delete", new { id = item.stockNumber })}
             </td>
         </tr>
     }

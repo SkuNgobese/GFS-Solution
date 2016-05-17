@@ -64,6 +64,18 @@ namespace GFS.Controllers.Policies
             }
             ViewBag.atlist = accTList;
             ViewBag.policyNo = new SelectList(db.NewMembers, "policyNo", "title");
+            if ((Session["prem"]) != null && Session["PolicyNo"] != null)
+            {
+                double addamount = 0;
+                var pol = Session["PolicyNo"].ToString();
+                var dep = db.Dependants.ToList().FindAll(p => p.policyNo == pol);
+                foreach (Dependant d in dep)
+                {
+                    addamount += d.amount;
+                    double s=Convert.ToDouble(Session["prem"]);
+                    Session["addamount"] = addamount+s;
+                }
+            }
             return View();
         }
 
@@ -76,12 +88,6 @@ namespace GFS.Controllers.Policies
         {
             //if (ModelState.IsValid)
             //{
-                //NewMember premium = db.NewMembers.ToList().Find(p => p.policyNo == payer.policyNo);
-                //Dependant amount = db.Dependants.ToList().FindAll(p => p.policyNo == payer.policyNo).ToList()[0];
-
-                //double prem = premium.Premium;
-                //double amnt = amount.amount;
-                //payer.initialPremium += prem + amnt;
                 if (Session["fname"]!=null)
                 {
                     payer.firstName = Session["fname"].ToString();

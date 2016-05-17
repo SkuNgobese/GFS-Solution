@@ -8,12 +8,15 @@ using System.Web;
 using System.Web.Mvc;
 using GFS.Models;
 
+using System.Web.Helpers;
+using System.Text;
+using System.Net.Mail;
+
 namespace GFS.Controllers
 {
     public class PaymentsController : Controller
     {
         private GFSContext db = new GFSContext();
-
         // GET: Payments
         //public ActionResult Index()
         //{
@@ -66,11 +69,27 @@ namespace GFS.Controllers
 
                 var d = db.NewMembers.ToList().Find(r => r.policyNo == searchStr);
                 var du = db.Payers.ToList().Find(r => r.policyNo == searchStr);
-                var stand = db.Payments.ToList().Find(r => r.policyNo == searchStr);
-                Session["polNo"] = d.policyNo;
-                Session["fullname"] = d.fName + " " + d.lName;
-                Session["plan"] = d.Policyplan;
-                Session["iniPrem"] = du.initialPremium + stand.outstandingAmount;
+                var stand = db.Payments.ToList().FindLast(r => r.policyNo == searchStr);
+                if(d!=null)
+                {
+                    Session["polNo"] = d.policyNo;
+                    Session["fullname"] = d.fName + " " + d.lName;
+                    Session["plan"] = d.Policyplan;
+                }
+                else if(d==null)
+                {
+                    Session["responce3"] = "Sorry, Member you searched for does not exist in the database! please add the Member first.";
+                    return View("Search");
+                }
+                if(stand!=null)
+                {
+                    Session["iniPrem"] = du.initialPremium + stand.outstandingAmount;
+                }
+                else if(stand==null)
+                {
+                    Session["iniPrem"] = du.initialPremium;
+                }
+                
                 return RedirectToAction("Create");
             }
             return View(payment);
@@ -94,7 +113,7 @@ namespace GFS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "referenceNo,policyNo,CustomerName,plan,dueAmount,amount,outstandingAmount,datePayed,cashierName,branch")] Payment payment)
+        public ActionResult Create([Bind(Include = "referenceNo,policyNo,CustomerName,plan,dueAmount,amount,outstandingAmount,datePayed,cashierName,branch,emailSlip")] Payment payment)
         {
             //if (ModelState.IsValid)
             //{
@@ -119,14 +138,6 @@ namespace GFS.Controllers
                 {
                     payment.dueAmount = 0;
                 }
-                //var init = db.Payers.ToList().Find(p => p.policyNo == payment.policyNo);
-
-                //Payment outstand = db.Payments.ToList().Find(p => p.policyNo == payment.policyNo);
-                //if(init!=null)
-                //{
-                //    double due = Convert.ToDouble(init.initialPremium) + outstand.outstandingAmount - payment.amount;
-                //    payment.dueAmount = due;
-                //}
                 
                 double outst = payment.dueAmount - payment.amount;
                 payment.outstandingAmount = outst;
@@ -134,9 +145,50 @@ namespace GFS.Controllers
 
                 db.Payments.Add(payment);
                 db.SaveChanges();
-                //Session["due"] = payment.dueAmount;
-                //Session["outstand"] = payment.outstandingAmount;
-                
+                if(payment.emailSlip==true)
+                {
+                    try
+                    {
+                        var emailA = db.NewMembers.ToList().Find(p => p.policyNo == payment.policyNo);
+                        var boddy = new StringBuilder();
+
+                        boddy.Append("Dear " + payment.CustomerName + "<br/>" +
+                                     "Thank You For Being G.F.S Customer" + "<br/>" +
+                                     "You Just made a payment with the following details" +
+                                      "Policy Number: " + payment.policyNo +
+                                      "Policy Plan: " + payment.plan +
+                                      "Amount That Was Due: R" + payment.dueAmount +
+                                      "Amount Paid: R" + payment.amount +
+                                      "Outstanding Amount: R" + payment.outstandingAmount +
+                                      "Date Paid: " + payment.datePayed +
+                                      "Your Cashier Was: " + payment.cashierName +
+                                      "Branch: " + payment.branch + "<br/>" +
+                                     "your satisfaction with our service is our priority" + "<br/>" +
+                                     "==========================================" + "<br/>");
+
+                        string body_for = boddy.ToString();
+                        string to_for = "";
+                        if(emailA!=null)
+                        {
+                            to_for = emailA.CustEmail;
+                        }                       
+                        string subject_for = "G.F.S Payment for "+DateTime.Now.Month.ToString();
+
+                        WebMail.SmtpServer = "pod51014.outlook.com";
+                        WebMail.SmtpPort = 587;
+
+                        WebMail.UserName = "21353863@dut4life.ac.za";
+                        WebMail.Password = "Dut930717";
+
+                        WebMail.From = "21353863@dut4life.ac.za";
+                        WebMail.EnableSsl = true;
+                        WebMail.Send(to: to_for, subject: subject_for, body: body_for);
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
+                } 
             //}
                 return RedirectToAction("Details", new { id = payment.referenceNo });
         }
@@ -161,7 +213,7 @@ namespace GFS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "referenceNo,policyNo,CustomerName,plan,dueAmount,amount,outstandingAmount,datePayed,cashierName,branch")] Payment payment)
+        public ActionResult Edit([Bind(Include = "referenceNo,policyNo,CustomerName,plan,dueAmount,amount,outstandingAmount,datePayed,cashierName,branch,emailSlip")] Payment payment)
         {
             if (ModelState.IsValid)
             {

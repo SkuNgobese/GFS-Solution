@@ -54,13 +54,13 @@ namespace GFS.Models.Policies
         [DisplayName("Covered Under:")]
         public string policyPlan { get; set; }
 
-        //[NotMapped]
-        //[DisplayName("As Beneficiary?")]
-        //public bool asBeneficiary { get; set; }
+        [NotMapped]
+        [DisplayName("As Beneficiary?")]
+        public bool asBeneficiary { get; set; }
 
-        //[NotMapped]
-        //[DisplayName("Add Another Dependant?")]
-        //public bool addAnotherDep { get; set; }
+        [NotMapped]
+        [DisplayName("Add Another Dependant?")]
+        public bool addAnotherDep { get; set; }
 
         [DisplayName("Policy No:")]
         public string policyNo { get; set; }

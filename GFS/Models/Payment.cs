@@ -32,7 +32,7 @@ namespace GFS.Models
         public double dueAmount { get; set; }
 
         [Required]
-        [DisplayName("Amount Paying(R):")]
+        [DisplayName("Cash Rendered(R):")]
         public double amount { get; set; }
 
         [DisplayName("Amount Outstanding (R):")]
@@ -50,5 +50,9 @@ namespace GFS.Models
         [Required]
         [DisplayName("Branch:")]
         public string branch { get; set; }
+
+        [NotMapped]
+        [DisplayName("Send Slip By Email?:")]
+        public bool emailSlip { get; set; }
     }
 }

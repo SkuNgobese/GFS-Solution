@@ -60,6 +60,14 @@
             @Html.DisplayFor(model => model.amount)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.policyNo)
+        </dd>
+
     </dl>
     <div>
         <input type="button" value="Add Another Policy" class="btn btn-success" onclick="@("window.location.href='" + @Url.Action("Create", "NewMembers") + "'");" />
