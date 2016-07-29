@@ -731,8 +731,8 @@ namespace GFS.Controllers.Policies
                     depTable.AddCell(d3);
                     PdfPCell d4 = new PdfPCell(new Phrase("Date Of Birth    :" + d.dOb.ToShortDateString(), thFont)) { Colspan = 2, Border = 0 };
                     depTable.AddCell(d4);
-                    PdfPCell d5 = new PdfPCell(new Phrase("Age    :" + d.age, thFont)) { Colspan = 2, Border = 0 };
-                    depTable.AddCell(d5);
+                    //PdfPCell d5 = new PdfPCell(new Phrase("Age    :" + d.age, thFont)) { Colspan = 2, Border = 0 };
+                    //depTable.AddCell(d5);
                     PdfPCell d6 = new PdfPCell(new Phrase("Relationship    :" + d.relationship, thFont)) { Colspan = 2, Border = 0 };
                     depTable.AddCell(d6);
                     PdfPCell d7 = new PdfPCell(new Phrase("Amount   :" + d.amount.ToString("R0.00"), thFont)) { Colspan = 2, Border = 0 };

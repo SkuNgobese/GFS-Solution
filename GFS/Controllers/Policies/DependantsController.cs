@@ -73,7 +73,7 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,age,relationship,amount,policyPlan,asBeneficiary,addAnotherDep,policyNo")] Dependant dependant)
+        public ActionResult Create([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,relationship,amount,policyPlan,asBeneficiary,addAnotherDep,policyNo")] Dependant dependant)
         {
             Dependant idno = db.Dependants.ToList().Find(x => x.IdNo == dependant.IdNo);
             if (idno != null)
@@ -106,22 +106,18 @@ namespace GFS.Controllers.Policies
                     DateTime d1 = DateTime.Parse(d);
                     dependant.dOb = d1;
                 }
-                if (dependant.dOb != null)
-                {
-                    dependant.age = new DateTime(DateTime.Now.Subtract(dependant.dOb).Ticks).Year - 1;
-                    //dependant.age = (DateTime.Now.Year) - (dependant.dOb.Year);
-                }
+                int age = new DateTime(DateTime.Now.Subtract(dependant.dOb).Ticks).Year - 1;
                 if (dependant.policyPlan == "Plan A")
                 {
-                    if (dependant.age <= 64)
+                    if (age <= 64)
                     {
                         dependant.amount = 80;
                     }
-                    else if (dependant.age <= 74)
+                    else if (age <= 74)
                     {
                         dependant.amount = 160;
                     }
-                    else if (dependant.age <= 84)
+                    else if (age <= 84)
                     {
                         dependant.amount = 310;
                     }
@@ -133,15 +129,15 @@ namespace GFS.Controllers.Policies
                 }
                 if (dependant.policyPlan == "Plan B")
                 {
-                    if (dependant.age <= 64)
+                    if (age <= 64)
                     {
                         dependant.amount = 60;
                     }
-                    else if (dependant.age <= 74)
+                    else if (age <= 74)
                     {
                         dependant.amount = 130;
                     }
-                    else if (dependant.age <= 84)
+                    else if (age <= 84)
                     {
                         dependant.amount = 170;
                     }
@@ -152,15 +148,15 @@ namespace GFS.Controllers.Policies
                 }
                 if (dependant.policyPlan == "Plan C1")
                 {
-                    if (dependant.age <= 64)
+                    if (age <= 64)
                     {
                         dependant.amount = 46;
                     }
-                    else if (dependant.age <= 74)
+                    else if (age <= 74)
                     {
                         dependant.amount = 82;
                     }
-                    else if (dependant.age <= 84)
+                    else if (age <= 84)
                     {
                         dependant.amount = 109;
                     }
@@ -171,15 +167,15 @@ namespace GFS.Controllers.Policies
                 }
                 if (dependant.policyPlan == "Plan C2")
                 {
-                    if (dependant.age <= 64)
+                    if (age <= 64)
                     {
                         dependant.amount = 64;
                     }
-                    else if (dependant.age <= 74)
+                    else if (age <= 74)
                     {
                         dependant.amount = 117;
                     }
-                    else if (dependant.age <= 84)
+                    else if (age <= 84)
                     {
                         dependant.amount = 158;
                     }
@@ -190,15 +186,15 @@ namespace GFS.Controllers.Policies
                 }
                 if (dependant.policyPlan == "Plan C3")
                 {
-                    if (dependant.age <= 64)
+                    if (age <= 64)
                     {
                         dependant.amount = 82;
                     }
-                    else if (dependant.age <= 74)
+                    else if (age <= 74)
                     {
                         dependant.amount = 153;
                     }
-                    else if (dependant.age <= 84)
+                    else if (age <= 84)
                     {
                         dependant.amount = 207;
                     }
@@ -208,7 +204,7 @@ namespace GFS.Controllers.Policies
                         return View("Create");
                     }
                 }
-                else if (dependant.age <= 18 || dependant.relationship == "Spouse")
+                else if (age <= 18 || dependant.relationship == "Spouse")
                 {
                     dependant.amount = 0;
                 }
@@ -261,7 +257,7 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,age,relationship,amount,policyPlan,asBeneficiary,addAnotherDep,policyNo")] Dependant dependant)
+        public ActionResult Edit([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,relationship,amount,policyPlan,asBeneficiary,addAnotherDep,policyNo")] Dependant dependant)
         {
             if (ModelState.IsValid)
             {

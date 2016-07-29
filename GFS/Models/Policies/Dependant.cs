@@ -37,10 +37,10 @@ namespace GFS.Models.Policies
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime dOb { get; set; }
 
-        [Required]
-        [DisplayName("Age:")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Please enter valid Age")]
-        public int age { get; set; }
+        //[Required]
+        //[DisplayName("Age:")]
+        //[RegularExpression(@"^\d+$", ErrorMessage = "Please enter valid Age")]
+        //public int age { get; set; }
 
         [Required]
         [DisplayName("Relation To Member:")]
