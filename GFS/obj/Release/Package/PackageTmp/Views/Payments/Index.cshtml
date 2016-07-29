@@ -1,0 +1,136 @@
+﻿@model IEnumerable<GFS.Models.Payment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <input type="button" value="Capture Payment" class="btn btn-success" onclick="@("window.location.href='" + @Url.Action("Search", "Payments") + "'");" />
+</div>
+<br />
+<h2>Payments</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <div class="col-md-10">
+            <table>
+                <tr>
+                    <td>
+                        <label>Start Date</label>
+                    </td>
+                    <td>
+                        <input type="date" name="startdate" style="background-color:white" class="datepicker" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>End Date</label>
+                    </td>
+                    <td>
+                        <input type="date" name="enddate" style="background-color:white" class="datepicker" />
+                        <input type="submit" value="Search" class="btn btn-primary" color:gold;opacity:0.6" /><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <td><label>Days:</label> </td>
+    <td>
+        @Html.DropDownList("criteria", new[]{
+                    new SelectListItem(){Text="Over 60 Days",Value="Over 60 Days"},
+                    new SelectListItem(){Text="Over 30 Days",Value="Over 30 Days"},
+               }, "-select-")
+</td><td><input type="submit" value="Filter" class="btn btn-primary"></td>
+}
+<div align="right">
+    <table>
+        <tr>
+            @using (Html.BeginForm())
+            {
+                <td><label>Search by Policy Number:</label> </td>
+                <td>@Html.TextBox("SearchString")</td>
+                <td><input type="submit" value="Search" class="btn btn-primary"></td>
+            }
+        </tr>
+    </table>
+</div>
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.referenceNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.plan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dueAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.outstandingAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datePayed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cashierName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.branch)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.referenceNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.policyNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.plan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dueAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.outstandingAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datePayed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cashierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.branch)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.referenceNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.referenceNo })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -10,6 +10,7 @@ namespace GFS.Models.Policies
 {
     public class NewMember
     {
+        public NewMember() { }
         [Key]
         [Required]
         [DisplayName("Policy No:")]
@@ -35,14 +36,15 @@ namespace GFS.Models.Policies
         [RegularExpression(@"^\d+$", ErrorMessage = "Please enter valid ID No.")]
         public string IdNo { get; set; }
 
+        [Required]
         [DisplayName("Date of Birth:")]
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime dOb { get; set; }
 
-        [Required]
-        [DisplayName("Age:")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Please enter valid Age")]
-        public int age { get; set; }
+        //[Required]
+        //[DisplayName("Age:")]
+        //[RegularExpression(@"^\d+$", ErrorMessage = "Please enter valid Age")]
+        //public int age { get; set; }
 
         [Required]
         [DisplayName("Gender:")]
@@ -58,6 +60,7 @@ namespace GFS.Models.Policies
         [DataType(DataType.PhoneNumber)]
         public string telNo { get; set; }
 
+        [Required]
         [StringLength(10, ErrorMessage = "Cell No. Must Be 10 Digits Long", MinimumLength = 10)]
         [RegularExpression(@"^\d+$", ErrorMessage = "Please enter a valid Cell number")]
         [DisplayName("Cell Number:")]
@@ -78,6 +81,7 @@ namespace GFS.Models.Policies
         [DataType(DataType.PostalCode)]
         public string physicalAddress { get; set; }
 
+        [Required]
         [DisplayName("Postal Address:")]
         [DataType(DataType.PostalCode)]
         public string postalAddress { get; set; }
@@ -93,15 +97,26 @@ namespace GFS.Models.Policies
 
         [Required]
         [DisplayName("Premium:")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double Premium { get; set; }
 
         [Required]
         [DisplayName("Category:")]
         public string Category { get; set; }
 
+        [Required]
+        [DisplayName("Branch:")]
+        public string Branch { get; set; }
+
+        [Required]
+        [DisplayName("Sales Person:")]
+        public string SalesPerson { get; set; }
+
+        [DisplayName("Captured By:")]
+        public string capturedby { get; set; }
+
         [NotMapped]
         public string PolicyPlanNo { get; set; }
-        public virtual ICollection<PolicyPlan> PolicyPlans { get; set; }
 
         [NotMapped]
         [DisplayName("Add Dependant?:")]
@@ -110,5 +125,11 @@ namespace GFS.Models.Policies
         [NotMapped]
         [DisplayName("Member Paying?:")]
         public bool paying { get; set; }
+
+        [DisplayName("Policy status:")]
+        public bool Active { get; set; }
+
+        public virtual ICollection<PolicyPlan> PolicyPlans { get; set; }
+        public virtual ICollection<Payment> payments { get; set; }
     }
 }

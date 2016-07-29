@@ -49,14 +49,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.age)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.age)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.gender)
         </dt>
 
@@ -152,16 +144,36 @@
             @Html.DisplayFor(model => model.Category)
         </dd>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.paying)
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.paying)
-        </dd>*@
+            @Html.DisplayFor(model => model.Branch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesPerson)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesPerson)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capturedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capturedby)
+        </dd>
 
     </dl>
 </div>
+<div align="right">
+    <input type="button" value="View Full Policy Profile" class="btn btn-primary btn-block" onclick="@("window.location.href='" + @Url.Action("Customer_Details", "NewMembers", new { id = Model.policyNo }) + "'");" /><br />
+</div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.policyNo }) |
     @Html.ActionLink("Back to List", "Index")

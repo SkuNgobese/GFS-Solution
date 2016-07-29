@@ -13,11 +13,15 @@ namespace GFS.Models.Policies
         [Key]
         public int payerNo { get; set; }
 
+        [DisplayName("Holder Name:")]
+        public string payingFor { get; set; }
+
         [Required]
         [DisplayName("Payment Method")]
         public string paymentType { get; set; }
 
         [DisplayName("Initial Premium:")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double initialPremium { get; set; }
 
         [Required]
@@ -36,20 +40,16 @@ namespace GFS.Models.Policies
         [DisplayName("Relation to Member")]
         public string relation { get; set; }
 
-        [DisplayName("Bank Name")]
-        public string bankName { get; set; }
+        [StringLength(10, ErrorMessage = "Cell No. Must Be 10 Digits Long", MinimumLength = 10)]
+        [RegularExpression(@"^\d+$", ErrorMessage = "Please enter a valid Cell number")]
+        [DisplayName("Contact Number:")]
+        [DataType(DataType.PhoneNumber)]
+        public string contactNo { get; set; }
 
-        [DisplayName("Account Number")]
-        public string accNo { get; set; }
-
-        [DisplayName("Branch Code")]
-        public string branchcode { get; set; }
-
-        [DisplayName("Branch Name")]
-        public string branchName { get; set; }
-
-        [DisplayName("Type of Account")]
-        public string accountType { get; set; }
+        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "Invalid email address.")]
+        [DisplayName("Email Address:")]
+        [DataType(DataType.EmailAddress)]
+        public string payerEmail { get; set; }
 
         [DisplayName("Policy No:")]
         public string policyNo { get; set; }

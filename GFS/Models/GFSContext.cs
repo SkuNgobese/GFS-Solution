@@ -15,7 +15,7 @@ namespace GFS.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public GFSContext() : base("name=GFSContext")
+        public GFSContext() : base("DefaultConnection")
         {
         }
 
@@ -42,12 +42,22 @@ namespace GFS.Models
         public System.Data.Entity.DbSet<GFS.Models.Policies.ArchivedMember> ArchivedMembers { get; set; }
 
         public System.Data.Entity.DbSet<GFS.Models.Policies.Deceased> Deceaseds { get; set; }
+        public System.Data.Entity.DbSet<GFS.Models.Policies.FileDetail> FileDetails { get; set; }
 
         public System.Data.Entity.DbSet<GFS.Models.StockFile> StockFiles { get; set; }
 
         public System.Data.Entity.DbSet<GFS.Models.StockCategory> StockCategories { get; set; }
 
         public System.Data.Entity.DbSet<GFS.Models.Payment> Payments { get; set; }
-    
+
+        public System.Data.Entity.DbSet<GFS.Models.LoginViewModel> LoginViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<GFS.Models.Branch> Branches { get; set; }
+
+        public System.Data.Entity.DbSet<GFS.Models.Plan_Type> Plan_Type { get; set; }
+
+        public System.Data.Entity.DbSet<GFS.Models.SalesPerson> SalesPersons { get; set; }
+
+        public System.Data.Entity.DbSet<GFS.Models.JoiningFee> JoiningFees { get; set; }
     }
 }

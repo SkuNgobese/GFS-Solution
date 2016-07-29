@@ -5,13 +5,13 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using GFS.Models.Policies;
 
 namespace GFS.Models
 {
     public class Payment
     {
-        [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Payment() { }
         [Key]
         [DisplayName("Reference Number:")]
         public int referenceNo { get; set; }
@@ -29,18 +29,21 @@ namespace GFS.Models
         public string plan { get; set; }
 
         [DisplayName("Due Amount (R):")]
+        [DisplayFormat(DataFormatString ="{0:f2}", ApplyFormatInEditMode =true)]
         public double dueAmount { get; set; }
 
         [Required]
-        [DisplayName("Cash Rendered(R):")]
+        [DisplayName("Amount (R):")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double amount { get; set; }
 
         [DisplayName("Amount Outstanding (R):")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double outstandingAmount { get; set; }
 
         [Required]
         [DisplayName("Date:")]
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime datePayed { get; set; }
 
         [Required]
@@ -54,5 +57,7 @@ namespace GFS.Models
         [NotMapped]
         [DisplayName("Send Slip By Email?:")]
         public bool emailSlip { get; set; }
+
+        public virtual NewMember principals { get; set; }
     }
 }

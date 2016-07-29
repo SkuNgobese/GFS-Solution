@@ -46,7 +46,7 @@ namespace GFS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "bankId,bankN")] Bank bank)
+        public ActionResult Create([Bind(Include = "bankId,bankN,code")] Bank bank)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace GFS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "bankId,bankN")] Bank bank)
+        public ActionResult Edit([Bind(Include = "bankId,bankN,code")] Bank bank)
         {
             if (ModelState.IsValid)
             {

@@ -74,44 +74,15 @@ namespace GFS.Controllers
             return View("Grid");
         }
 
-        public ActionResult Blank()
+        public ActionResult Home()
         {
-            return View("Blank");
+            return View("Home");
         }
 
         public ActionResult Login()
         {
             return View("Login");
         }
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Login(User user, string returnUrl)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View("Login");
-        //    }
-        //    var data = new Data();
-        //    var users = data.users();
-
-        //    if (users.Any(p => p.user == user.CustEmail && p.password == user.password))
-        //    {
-        //        //var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, user.firstname,user.lastname), }, DefaultAuthenticationTypes.ApplicationCookie);
-
-        //        //Authentication.SignIn(new AuthenticationProperties
-        //        //{
-        //        //    IsPersistent = user.RememberMe
-        //        //}, identity);
-
-        //        return RedirectToAction("Index", "NewMembers");
-        //    }
-        //    else
-        //    {
-        //        ModelState.AddModelError("", "Invalid login attempt.");
-        //        return View("Login");
-        //    }
-        //}
 
     }
 }

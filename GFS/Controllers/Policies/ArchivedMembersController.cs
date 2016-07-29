@@ -71,7 +71,7 @@ namespace GFS.Controllers.Policies
                 archivedMember.lName = Session["lName"].ToString();
                 archivedMember.IdNo = Session["IdNo"].ToString();
                 archivedMember.dOb = Convert.ToDateTime(Session["dOb"].ToString());
-                archivedMember.age = Convert.ToInt32(Session["age"].ToString());
+                //archivedMember.age = Convert.ToInt32(Session["age"].ToString());
                 archivedMember.gender = Session["gender"].ToString();
                 archivedMember.maritalStat = Session["maritalStat"].ToString();
                 archivedMember.telNo = Session["telNo"].ToString();

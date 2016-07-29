@@ -1,10 +1,26 @@
-﻿<h1>Gumbi Funeral Services</h1>
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+                <h1 class="page-header">Gumbi Financial Services</h1>
+        </div>
+    </div>
+</div>
+<div align="left">
+    <table>
+        <tr>
+            @using (Html.BeginForm())
+            {
+                <td><input type="button" value="Pay Joining Fee" class="btn btn-primary" onclick="@("window.location.href='" + @Url.Action("Create", "JoiningFees") + "'");" /></td>
+            }
+        </tr>
+    </table>
+</div>
 <div align="right">
     <table>
         <tr>
             @using (Html.BeginForm())
             {
-                <td>Find by Policy Number: </td>
+                <td><b>Find by Policy Number: </b></td>
                 <td>@Html.TextBox("searchStr")</td>
                 <td><input type="submit" value="Search" class="btn btn-primary"></td>
             }
@@ -15,12 +31,12 @@
 <br />
 <div align="right">
     <table>
-        @using (Html.BeginForm())
-        {
-            <tr class="col-md-offset-2 col-md-10">
+        <tr>
+            @using (Html.BeginForm())
+            {
                 <td><input type="button" value="Pay Without Searching" class="btn btn-danger" onclick="@("window.location.href='" + @Url.Action("Create", "Payments") + "'");" /></td>
-            </tr>
-        }
+            }
+        </tr>
     </table>
 </div>
 @if (Session["responce3"] != null)
@@ -28,3 +44,11 @@
     <script>alert("@Session["responce3"].ToString()");</script>
 }
 @Html.ValidationSummary()
+<p class="site-title">
+    <div align="center">
+        <a>
+            <img src="~/Images/Logo3.png" poalt="Company logo" width="1000" height="500" />
+        </a>
+    </div>
+
+</p>

@@ -15,9 +15,16 @@ namespace GFS.Controllers
         private GFSContext db = new GFSContext();
 
         // GET: Users
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
-            return View(db.Users.ToList());
+            var users = from m in db.Users
+                        select m;
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                users = users.Where(s => s.userid.Contains(SearchString));
+            }
+            return View(users);
         }
 
         // GET: Users/Details/5
@@ -46,16 +53,54 @@ namespace GFS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userid,Id,firstname,lastname,CustEmail,user,password,ConfirmPassword,estatus,RememberMe")] User user)
+        public ActionResult Create([Bind(Include = "userid,Id,firstname,lastname,CustEmail,user,password,ConfirmPassword,estatus,RememberMe")] User users, string Pass)
         {
-            if (ModelState.IsValid)
+            var seI = db.Users.ToList().Find(p => p.userid == users.userid);
+            var seE = db.Users.ToList().Find(p => p.CustEmail == users.CustEmail);
+
+            if (seI != null)
             {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Session["UseAdd"] = "User ID already exists";
+                return RedirectToAction("Create");
             }
 
-            return View(user);
+            if (seE != null)
+            {
+                Session["UseAdd"] = "User Email already exists";
+                return RedirectToAction("Create");
+            }
+            else if (ModelState.IsValid)
+            {
+
+
+                if (users.user == "Admin")
+                {
+                    users.Id = 1;
+                }
+                if (users.user == "Data Capturer")
+                {
+                    users.Id = 2;
+                }
+                if (users.user == "Cashier")
+                {
+                    users.Id = 3;
+                }
+
+                if (Pass != "GFSTech")
+                {
+                    Session["UseAdd"] = "Invalid Pass Key!!!";
+                    return RedirectToAction("Create");
+                }
+
+                users.estatus = true;
+
+                users.RememberMe = false;
+                db.Users.Add(users);
+                db.SaveChanges();
+                return RedirectToAction("Details", new { id = users.userid });
+            }
+
+            return View(users);
         }
 
         // GET: Users/Edit/5

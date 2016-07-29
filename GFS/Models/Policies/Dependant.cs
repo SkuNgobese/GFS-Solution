@@ -48,6 +48,7 @@ namespace GFS.Models.Policies
 
         [Required]
         [DisplayName("Amount Added:")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double amount { get; set; }
 
         [Required]

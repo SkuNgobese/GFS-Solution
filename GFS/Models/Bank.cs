@@ -16,5 +16,9 @@ namespace GFS.Models
         [Required]
         [DisplayName("Bank")]
         public string bankN { get; set; }
+
+        [Required]
+        [DisplayName("Code")]
+        public string code { get; set; }
     }
 }

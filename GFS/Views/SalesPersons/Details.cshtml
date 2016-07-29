@@ -1,0 +1,66 @@
+﻿@model GFS.Models.SalesPerson
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sales Person Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cellNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cellNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

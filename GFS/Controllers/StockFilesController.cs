@@ -16,16 +16,22 @@ namespace GFS.Controllers
         private GFSContext db = new GFSContext();
 
         // GET: StockFiles
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchBy, string search)
         {
-            var stock = from m in db.StockFiles
-                        select m;
-
-            if (!String.IsNullOrEmpty(searchString))
+            if (searchBy == "stockCode")
             {
-                stock = stock.Where(s => s.stockCode.Contains(searchString));
+                return View(db.StockFiles.Where(x => x.stockCode == search || search == null).ToList());
             }
-            return View(stock);
+            else
+               if (searchBy == "status")
+            {
+                return View(db.StockFiles.Where(x => x.status == search || search == null).ToList());
+
+            }
+            else
+            {
+                return View(db.StockFiles.Where(x => x.category == search || search == null).ToList());
+            }
         }
 
         // GET: StockFiles/Details/5

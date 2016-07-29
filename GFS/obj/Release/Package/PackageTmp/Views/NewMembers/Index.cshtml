@@ -1,0 +1,167 @@
+﻿@model IEnumerable<GFS.Models.Policies.NewMember>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <input type="button" value="Print Holders' List" class="btn btn-primary" onclick="@("window.location.href='" + @Url.Action("PrintAll", "NewMembers") + "'");" />
+</div>
+<br />
+<h2>Policy Holders</h2>                                          
+<div align="right">
+
+    <p>
+        @using (Html.BeginForm("Index", "NewMembers", System.Web.Mvc.FormMethod.Get))
+        {
+            <b>Search By:</b>  @Html.RadioButton("SearchBy", "policyNo", true)<text>Policy No</text>
+            @Html.RadioButton("SearchBy", "IdNo")<text>Id Number</text>
+            @Html.RadioButton("SearchBy", "fullName")<text>Name or Surname</text><br />
+
+            @Html.TextBox("Search")<input type="submit" value="Search" class="btn btn-primary" />
+            if(Session["response10"] != null)
+            {
+                @Html.Label(Session["response10"].ToString())
+            }
+
+        }
+    </p>
+
+</div>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdNo)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.dOb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.maritalStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cellNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fascimileNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.physicalAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.postalAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateAdded)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Policyplan)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Premium)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.paying)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.policyNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNo)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.dOb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.maritalStat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cellNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fascimileNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicalAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.postalAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateAdded)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Policyplan)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Premium)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paying)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.policyNo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.policyNo }) |
+                @Html.ActionLink("Archive", "Delete", new { id = item.policyNo })
+            </td>
+        </tr>
+    }
+
+</table>

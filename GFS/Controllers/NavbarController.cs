@@ -11,10 +11,13 @@ namespace GFS.Controllers
     public class NavbarController : Controller
     {
         // GET: Navbar
-        public ActionResult Index()
+        public ActionResult Navbar(string controller, string action)
         {
             var data = new Data();
-            return PartialView("_Navbar", data.navbarItems().ToList());
+
+            var navbar = data.itemsPerUser(controller, action, User.Identity.Name);
+
+            return PartialView("_Navbar", navbar);
         }
     }
 }

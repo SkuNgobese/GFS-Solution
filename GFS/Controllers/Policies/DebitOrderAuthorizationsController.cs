@@ -16,10 +16,15 @@ namespace GFS.Controllers.Policies
         private GFSContext db = new GFSContext();
 
         // GET: DebitOrderAuthorizations
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            var debitOrderAuthorizations = db.DebitOrderAuthorizations.Include(d => d.NewMembers).Include(d => d.Payers);
-            return View(debitOrderAuthorizations.ToList());
+            var debitOrderAuthorizations = from b in db.DebitOrderAuthorizations.ToList()
+                                           select b;
+            if(!String.IsNullOrEmpty(search))
+            {
+                debitOrderAuthorizations = db.DebitOrderAuthorizations.Where(p => p.policyNo==(search));
+            }
+            return View(debitOrderAuthorizations);
         }
 
         // GET: DebitOrderAuthorizations/Details/5
@@ -40,8 +45,20 @@ namespace GFS.Controllers.Policies
         // GET: DebitOrderAuthorizations/Create
         public ActionResult Create()
         {
-            //ViewBag.policyNo = new SelectList(db.NewMembers, "policyNo", "title");
-            //ViewBag.payerNo = new SelectList(db.Payers, "payerNo", "paymentType");
+            var bankList = new List<SelectListItem>();
+            var DirQuery = from e in db.Banks select e;
+            foreach (var m in DirQuery)
+            {
+                bankList.Add(new SelectListItem { Value = m.bankN, Text = m.bankN });
+            }
+            ViewBag.blist = bankList;
+            var accTList = new List<SelectListItem>();
+            var atQuery = from e in db.AccTypes select e;
+            foreach (var m in atQuery)
+            {
+                accTList.Add(new SelectListItem { Value = m.accNType, Text = m.accNType });
+            }
+            ViewBag.atlist = accTList;
             return View();
         }
 
@@ -50,10 +67,15 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "debitAuthNo,commenceDate,amount,policyNo,payerNo")] DebitOrderAuthorization debitOrderAuthorization)
+        public ActionResult Create([Bind(Include = "debitAuthNo,bankName,accNo,branchcode,branchName,accountType,commenceDate,amount,policyNo,payerNo")] DebitOrderAuthorization debitOrderAuthorization)
         {
             if (ModelState.IsValid)
             {
+                if(debitOrderAuthorization.commenceDate<=DateTime.Now)
+                {
+                    Session["responce7"] = "Commence date should not be past date!";
+                    return RedirectToAction("Create");
+                }
                 if (Session["policyNo"]!=null)
                 {
                     debitOrderAuthorization.policyNo = (Session["policyNo"]).ToString();
@@ -75,12 +97,9 @@ namespace GFS.Controllers.Policies
                 if(debitOrderAuthorization!=null)
                 {
                     Session["Debit"] = debitOrderAuthorization;
-                }                
-                return RedirectToAction("Details", new { id = debitOrderAuthorization.debitAuthNo });
+                }
+                return RedirectToAction("Customer_Details", "NewMembers", new { id = debitOrderAuthorization.policyNo });
             }
-
-            //ViewBag.policyNo = new SelectList(db.NewMembers, "policyNo", "title", debitOrderAuthorization.policyNo);
-            //ViewBag.payerNo = new SelectList(db.Payers, "payerNo", "paymentType", debitOrderAuthorization.payerNo);
             return View(debitOrderAuthorization);
         }
 
@@ -96,8 +115,6 @@ namespace GFS.Controllers.Policies
             {
                 return HttpNotFound();
             }
-            //ViewBag.policyNo = new SelectList(db.NewMembers, "policyNo", "title", debitOrderAuthorization.policyNo);
-            //ViewBag.payerNo = new SelectList(db.Payers, "payerNo", "paymentType", debitOrderAuthorization.payerNo);
             return View(debitOrderAuthorization);
         }
 
@@ -106,7 +123,7 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "debitAuthNo,commenceDate,amount,policyNo,payerNo")] DebitOrderAuthorization debitOrderAuthorization)
+        public ActionResult Edit([Bind(Include = "debitAuthNo,bankName,accNo,branchcode,branchName,accountType,commenceDate,amount,policyNo,payerNo")] DebitOrderAuthorization debitOrderAuthorization)
         {
             if (ModelState.IsValid)
             {
@@ -114,8 +131,6 @@ namespace GFS.Controllers.Policies
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.policyNo = new SelectList(db.NewMembers, "policyNo", "title", debitOrderAuthorization.policyNo);
-            //ViewBag.payerNo = new SelectList(db.Payers, "payerNo", "paymentType", debitOrderAuthorization.payerNo);
             return View(debitOrderAuthorization);
         }
 

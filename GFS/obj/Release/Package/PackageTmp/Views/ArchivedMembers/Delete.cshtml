@@ -1,0 +1,190 @@
+﻿@model GFS.Models.Policies.ArchivedMember
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ArchivedMember</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dOb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dOb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maritalStat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maritalStat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cellNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cellNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fascimileNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fascimileNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.physicalAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.physicalAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postalAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postalAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateAdded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateAdded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Policyplan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Policyplan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Premium)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Premium)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateArchived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateArchived)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reason)
+        </dd>
+
+    </dl>
+    @*if (Session["responce"] != null)
+    {
+        <script>alert("@Session["responce2"].ToString()");</script>
+    }
+    @Html.ValidationSummary()*@
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

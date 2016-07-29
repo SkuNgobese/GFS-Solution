@@ -15,6 +15,18 @@ namespace GFS.Models.Policies
         [Key]
         public int debitAuthNo { get; set; }
 
+        [DisplayName("Bank Name")]
+        public string bankName { get; set; }
+
+        [DisplayName("Account Number")]
+        public string accNo { get; set; }
+
+        [DisplayName("Branch Code")]
+        public string branchcode { get; set; }
+
+        [DisplayName("Type of Account")]
+        public string accountType { get; set; }
+
         [Required]
         [DisplayName("Commence Date:")]
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
@@ -22,6 +34,7 @@ namespace GFS.Models.Policies
 
         [Required]
         [DisplayName("Amount:")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double amount { get; set; }
 
         [DisplayName("Policy No:")]

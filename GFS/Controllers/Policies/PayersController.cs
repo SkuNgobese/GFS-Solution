@@ -16,13 +16,28 @@ namespace GFS.Controllers.Policies
         private GFSContext db = new GFSContext();
 
         // GET: Payers
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string search)
         {
-            var payers = db.Payers.Include(p => p.NewMembers);
-            return View(payers.ToList());
+            var pay = from d in db.Payers.ToList()
+                        select d;
+            if (searchBy == "policyNo")
+            {
+                pay = (db.Payers.Where(x => x.policyNo == search).ToList());
+            }
+            else if (searchBy == "fName")
+            {
+                pay = (db.Payers.Where(x => x.firstName == search).ToList());
+            }
+            else if (searchBy == "idnumber")
+            {
+                pay = (db.Payers.Where(x => x.idNo == search).ToList());
+            }
+            else if (searchBy == "coveredby")
+            {
+                pay = (db.Payers.Where(x => x.payingFor == search).ToList());
+            }
+            return View(pay);
         }
-
-        // GET: Payers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,13 +55,7 @@ namespace GFS.Controllers.Policies
         // GET: Payers/Create
         public ActionResult Create()
         {
-            var bankList = new List<SelectListItem>();
-            var DirQuery = from e in db.Banks select e;
-            foreach (var m in DirQuery)
-            {
-                bankList.Add(new SelectListItem { Value = m.bankN, Text = m.bankN });
-            }
-            ViewBag.blist = bankList;
+            
 
             var relList = new List<SelectListItem>();
             var reQuery = from e in db.Relations select e;
@@ -56,13 +65,7 @@ namespace GFS.Controllers.Policies
             }
             ViewBag.relist = relList;
 
-            var accTList = new List<SelectListItem>();
-            var atQuery = from e in db.AccTypes select e;
-            foreach (var m in atQuery)
-            {
-                accTList.Add(new SelectListItem { Value = m.accNType, Text = m.accNType });
-            }
-            ViewBag.atlist = accTList;
+            
             ViewBag.policyNo = new SelectList(db.NewMembers, "policyNo", "title");
             if ((Session["prem"]) != null && Session["PolicyNo"] != null)
             {
@@ -84,11 +87,15 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "payerNo,paymentType,initialPremium,firstName,lastName,idNo,relation,bankName,accNo,branchcode,branchName,accountType,policyNo")] Payer payer)
+        public ActionResult Create([Bind(Include = "payerNo,payingFor,paymentType,initialPremium,firstName,lastName,idNo,relation,contactNo,payerEmail,policyNo")] Payer payer)
         {
             //if (ModelState.IsValid)
             //{
-                if (Session["fname"]!=null)
+            if (Session["owner"] != null)
+            {
+                payer.payingFor = (Session["owner"]).ToString();
+            }
+            if (Session["fname"]!=null)
                 {
                     payer.firstName = Session["fname"].ToString();
                 }
@@ -103,6 +110,14 @@ namespace GFS.Controllers.Policies
                 if (Session["pay"] != null)
                 {
                     payer.relation = Session["pay"].ToString();
+                }
+                if(Session["contact"]!=null)
+                {
+                    payer.contactNo = Session["contact"].ToString();
+                }
+                if(Session["email"]!=null)
+                {
+                    payer.payerEmail = Session["email"].ToString();
                 }
                 if (Session["PolicyNo"]!=null)
                 {
@@ -122,17 +137,15 @@ namespace GFS.Controllers.Policies
                 if(payer!=null)
                 {
                     Session["Payer"] = payer;
-                }               
-                if (payer.paymentType == "Debit Order")
-                {
-                    return RedirectToAction("Create", "DebitOrderAuthorizations");
                 }
-                else
-                
+            if (payer.paymentType == "Debit Order")
+            {
+                return RedirectToAction("Create", "DebitOrderAuthorizations");
+            }
+            else
+                ModelState.Clear(); 
             //}
-
-            //ViewBag.policyNo = new SelectList(db.NewMembers, "policyNo", "title", payer.policyNo);
-            return RedirectToAction("Details", new { id = payer.payerNo });
+            return RedirectToAction("Customer_Details", "NewMembers", new { id = payer.policyNo });
         }
 
         // GET: Payers/Edit/5
@@ -156,7 +169,7 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "payerNo,paymentType,initialPremium,firstName,lastName,idNo,relation,bankName,accNo,branchcode,branchName,accountType,policyNo")] Payer payer)
+        public ActionResult Edit([Bind(Include = "payerNo,payingFor,paymentType,initialPremium,firstName,lastName,idNo,relation,contactNo,payerEmail,policyNo")] Payer payer)
         {
             if (ModelState.IsValid)
             {

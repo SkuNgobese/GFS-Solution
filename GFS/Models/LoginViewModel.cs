@@ -8,7 +8,10 @@ namespace GFS.Models
 {
     public class LoginViewModel
     {
+        [Key]
         [Required]
+        //[DataType(DataType.EmailAddress)]
+        //[RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "Invalid email address.")]
         public string UserName { get; set; }
 
         [Required]

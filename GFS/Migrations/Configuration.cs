@@ -4,6 +4,7 @@ namespace GFS.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using GFS.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<GFS.Models.GFSContext>
     {
@@ -20,13 +21,21 @@ namespace GFS.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Users.AddOrUpdate(x => x.userid,
+            new User()
+            {
+                userid = "1234567891011",
+                Id = 1,
+                firstname = "Admin",
+                lastname = "Admin",
+                CustEmail = "admin@admin.com",
+                user = "Admin",
+                password = "123456",
+                ConfirmPassword = "123456",
+                estatus = true,
+                RememberMe = false
+            }
+            );
         }
     }
 }

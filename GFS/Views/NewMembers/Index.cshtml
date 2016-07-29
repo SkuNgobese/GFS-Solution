@@ -4,26 +4,37 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Policy Holders</h2>
-                                
-<div align="right">
-    <table>
-        <tr>
-            @using (Html.BeginForm())
-            {                
-                <td>Find by Policy Number: </td>
-                <td>@Html.TextBox("SearchString")</td>
-                <td><input type="submit" value="Search" class="btn btn-primary"></td>
-            }
-        </tr>
-    </table>
+<div>
+    <input type="button" value="Print Holders' List" class="btn btn-primary" onclick="@("window.location.href='" + @Url.Action("PrintAll", "NewMembers") + "'");" />
 </div>
+<br />
+<h2>Policy Holders</h2>                                          
+<div align="right">
 
-<p>
-    @Html.ActionLink("Add New Member", "Create")
-</p>
-<table class="table table-bordered table-responsive">
+    <p>
+        @using (Html.BeginForm("Index", "NewMembers", System.Web.Mvc.FormMethod.Get))
+        {
+            <b>Search By:</b>  @Html.RadioButton("SearchBy", "policyNo", true)<text>Policy No</text>
+            @Html.RadioButton("SearchBy", "IdNo")<text>Id Number</text>
+            @Html.RadioButton("SearchBy", "nameorsurn")<text>Name/Surname</text><br />
+
+            @Html.TextBox("Search")<input type="submit" value="Search" class="btn btn-primary" />
+
+        }
+    </p>
+</div>
+@*Total Client: @Model.Count()*@
+<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+    <span class="text">
+        Active Policies
+        <span class="pull-right">@ViewBag.ActivePrincipals of @ViewBag.AllPrincipals</span>
+         
+    </span>
+    <div class="progress">
+        <div class="progress-bar bg-color-blueDark" style="width: @ViewBag.percentActive%;"></div>
+    </div>
+</div>
+<table class="table table-bordered table-responsive table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.policyNo)
@@ -40,51 +51,10 @@
         <th>
             @Html.DisplayNameFor(model => model.IdNo)
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.dOb)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.maritalStat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.telNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cellNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CustEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fascimileNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.physicalAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.postalAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dateAdded)
-            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Policyplan)
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Premium)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.paying)
-            </th>*@
+        
         <th></th>
     </tr>
 
@@ -106,51 +76,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IdNo)
             </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.dOb)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.age)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.gender)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.maritalStat)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.telNo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cellNo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustEmail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.fascimileNo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.physicalAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.postalAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.dateAdded)
-                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Policyplan)
             </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Premium)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.paying)
-                </td>*@
+
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.policyNo }) |
                 @Html.ActionLink("Details", "Details", new { id = item.policyNo }) |

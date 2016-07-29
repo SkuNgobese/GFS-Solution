@@ -4,28 +4,72 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<div>
+    <input type="button" value="Capture Payment" class="btn btn-success" onclick="@("window.location.href='" + @Url.Action("Search", "Payments") + "'");" />
+</div>
+<br />
 <h2>Payments</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <div class="col-md-10">
+            <table>
+                <tr>
+                    <td>
+                        <label>Start Date</label>
+                    </td>
+                    <td>
+                        <input type="date" name="startdate" style="background-color:white" class="datepicker" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>End Date</label>
+                    </td>
+                    <td>
+                        <input type="date" name="enddate" style="background-color:white" class="datepicker" />
+                        <input type="submit" value="Search" class="btn btn-primary" color:gold;opacity:0.6" /><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}
 <div align="right">
     <table>
         <tr>
             @using (Html.BeginForm())
             {
-                <td>Find by Policy Number: </td>
-                <td>@Html.TextBox("SearchString")</td>
-                <td><input type="submit" value="Search" class="btn btn-primary"></td>
+                <td><label>Didn't Pay:</label></td>
+                <td>
+                    @Html.DropDownList("criteria", new[]{
+                    new SelectListItem(){Text="Over 60 Days",Value="Over 60 Days"},
+                    new SelectListItem(){Text="Over 30 Days",Value="Over 30 Days"},
+               }, "-select-")
+            </td>
+            <td><input type="submit" value="Filter" class="btn btn-primary"></td>
+            }
+        </tr>
+    </table>
+</div>
+<div align="right">
+    <table>
+        <tr>
+            @using (Html.BeginForm())
+            {
+                <td><label>Search by Policy Number:</label> </td>
+                            <td>@Html.TextBox("SearchString")</td>
+                            <td><input type="submit" value="Search" class="btn btn-primary"></td>
             }
         </tr>
     </table>
 </div>
 
-<div>
-    <input type="button" value="Capture Payment" class="btn btn-success" onclick="@("window.location.href='" + @Url.Action("Search", "Payments") + "'");" />
-</div>
-<br />
-
-<table class="table table-bordered table-responsive">
+<table class="table table-bordered table-responsive table-hover">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.referenceNo)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.policyNo)
         </th>
@@ -60,6 +104,9 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.referenceNo)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.policyNo)
             </td>
             <td>
@@ -87,7 +134,6 @@
                 @Html.DisplayFor(modelItem => item.branch)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.referenceNo }) |
                 @Html.ActionLink("Details", "Details", new { id = item.referenceNo }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.referenceNo })
             </td>

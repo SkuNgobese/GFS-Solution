@@ -204,8 +204,8 @@ $.extend($.fn, {
 
 // Custom selectors
 $.extend($.expr[":"], {
-	// http://docs.jquery.com/Plugins/Validation/blank
-	blank: function(a) {return !$.trim("" + a.value);},
+	// http://docs.jquery.com/Plugins/Validation/Home
+	Home: function(a) {return !$.trim("" + a.value);},
 	// http://docs.jquery.com/Plugins/Validation/filled
 	filled: function(a) {return !!$.trim("" + a.value);},
 	// http://docs.jquery.com/Plugins/Validation/unchecked

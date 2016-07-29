@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "DeclareDeceased";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Search Deceased</h1>
+        </div>
+    </div>
+</div>
+<div align="center">
+
+    <p>
+        @using (Html.BeginForm("DeclareDeceased", "Deceased", System.Web.Mvc.FormMethod.Get))
+        {
+            <div><b>Use ID No. Search For:</b></div>
+            <div>@Html.RadioButton("search", "principal")<text>Principal Member</text> @Html.RadioButton("search", "dependant",true)<text>Dependant</text></div>
+            <div>@Html.TextBox("id")<input type="submit" value="Search" class="btn btn-primary" /></div>
+
+
+        }
+    </p>
+
+</div>
+@if (TempData["responc"] != null)
+{
+    <script>alert("@TempData["responc"].ToString()");</script>
+}
+@Html.ValidationSummary()
+

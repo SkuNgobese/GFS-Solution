@@ -16,10 +16,27 @@ namespace GFS.Controllers.Policies
         private GFSContext db = new GFSContext();
 
         // GET: Dependants
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string search)
         {
-            var dependants = db.Dependants.Include(b => b.NewMembers);
-            return View(dependants.ToList());
+            var dependant = from d in db.Dependants.ToList()
+                            select d;
+            if (searchBy == "policyNo")
+            {
+                dependant=(db.Dependants.Where(x => x.policyNo == search).ToList());
+            }
+            else if (searchBy == "fName")
+            {
+                dependant=(db.Dependants.Where(x => x.fName == search).ToList());
+            }
+            else if (searchBy == "idnumber")
+            {              
+                dependant=(db.Dependants.Where(x => x.IdNo == search).ToList());
+            }
+            else if(searchBy == "coveredby")
+            {
+                dependant=(db.Dependants.Where(x => x.coveredby == search).ToList());
+            }
+            return View(dependant);
         }
 
         // GET: Dependants/Details/5
@@ -40,6 +57,7 @@ namespace GFS.Controllers.Policies
         // GET: Dependants/Create
         public ActionResult Create()
         {
+            
             var relList = new List<SelectListItem>();
             var DirQuery = from e in db.Relations select e;
             foreach (var m in DirQuery)
@@ -60,7 +78,7 @@ namespace GFS.Controllers.Policies
             Dependant idno = db.Dependants.ToList().Find(x => x.IdNo == dependant.IdNo);
             if (idno != null)
             {
-                Session["responce4"] = "Dependant Already Exists, Check ID Number! Covered under: "+idno.coveredby;
+                TempData["responce4"] = "Dependant Already Exists, Check ID Number! Covered under: "+idno.coveredby;
                 return RedirectToAction("Create");
             }
             //if (ModelState.IsValid)
@@ -80,15 +98,18 @@ namespace GFS.Controllers.Policies
                 }
                 if (dependant.IdNo != null)
                 {
-                    int year = Convert.ToInt16(dependant.IdNo.Substring(0, 2));
+                    int year = Convert.ToInt32(dependant.IdNo.Substring(0, 2));
                     int month = Convert.ToInt16(dependant.IdNo.Substring(2, 2));
                     int day = Convert.ToInt16(dependant.IdNo.Substring(4, 2));
-                    int gender = Convert.ToInt16(dependant.IdNo.Substring(7, 1));
-                    dependant.dOb = Convert.ToDateTime(day + "-" + month + "-" + year);
+
+                    var d = (year + "-" + month + "-" + day);
+                    DateTime d1 = DateTime.Parse(d);
+                    dependant.dOb = d1;
                 }
                 if (dependant.dOb != null)
                 {
-                    dependant.age = (DateTime.Now.Year) - (dependant.dOb.Year);
+                    dependant.age = new DateTime(DateTime.Now.Subtract(dependant.dOb).Ticks).Year - 1;
+                    //dependant.age = (DateTime.Now.Year) - (dependant.dOb.Year);
                 }
                 if (dependant.policyPlan == "Plan A")
                 {
@@ -106,7 +127,7 @@ namespace GFS.Controllers.Policies
                     }
                     else
                     {
-                        Session["responce4"] = "Cannot add person over 84 years from this plan!";
+                        TempData["responce4"] = "Cannot add person over 84 years from this plan!";
                         return View("Create");
                     }
                 }
@@ -183,7 +204,7 @@ namespace GFS.Controllers.Policies
                     }
                     else
                     {
-                        Session["responce4"] = "Cannot add person over 84 years from this plan!";
+                        TempData["responce4"] = "Cannot add person over 84 years from this plan!";
                         return View("Create");
                     }
                 }
@@ -193,23 +214,20 @@ namespace GFS.Controllers.Policies
                 }
                 db.Dependants.Add(dependant);
                 db.SaveChanges();
-                if (dependant != null)
+                var deps = db.Dependants.ToList().Where(p => p.policyNo == dependant.policyNo);
+                foreach(Dependant d in deps)
                 {
-                    Session["Dep"] = dependant;
-                }
+                    if (dependant != null)
+                    {
+                        Session["Dep"] = d;
+                    }
+                }                
                 if (dependant.asBeneficiary == true)
                 {
                     Session["finame"] = dependant.fName;
                     Session["laname"] = dependant.lName;
                     Session["Id"] = dependant.IdNo;
                     Session["relation"] = dependant.relationship;
-                }
-                if (dependant.asBeneficiary == false)
-                {
-                    Session["finame"] = null;
-                    Session["laname"] = null;
-                    Session["Id"] = null;
-                    Session["relation"] = null;
                 }
                 if (dependant.addAnotherDep == true)
                 {

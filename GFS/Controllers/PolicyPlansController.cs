@@ -15,9 +15,19 @@ namespace GFS.Controllers
         private GFSContext db = new GFSContext();
 
         // GET: PolicyPlans
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string search)
         {
-            return View(db.PolicyPlans.ToList());
+            var plans = from p in db.PolicyPlans.ToList()
+                        select p;
+            if (searchBy == "category")
+            {
+                plans=db.PolicyPlans.Where(x => x.category == search).ToList();
+            }
+            else if (searchBy == "policyType")
+            {
+                plans=db.PolicyPlans.Where(x => x.policyType == search).ToList();
+            }
+            return View(plans);
         }
 
         // GET: PolicyPlans/Details/5
@@ -38,6 +48,13 @@ namespace GFS.Controllers
         // GET: PolicyPlans/Create
         public ActionResult Create()
         {
+            var planList = new List<SelectListItem>();
+            var PlanQuery = from e in db.Plan_Type select e;
+            foreach (var m in PlanQuery)
+            {
+                planList.Add(new SelectListItem { Value = m.plan, Text = m.plan });
+            }
+            ViewBag.plnlst = planList;
             return View();
         }
 

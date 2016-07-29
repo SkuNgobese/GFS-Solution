@@ -16,10 +16,27 @@ namespace GFS.Controllers.Policies
         private GFSContext db = new GFSContext();
 
         // GET: Beneficiaries
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string search)
         {
-            var beneficiaries = db.Beneficiaries.Include(b => b.NewMembers);
-            return View(beneficiaries.ToList());
+            var benef = from d in db.Beneficiaries.ToList()
+                            select d;
+            if (searchBy == "policyNo")
+            {
+                benef = (db.Beneficiaries.Where(x => x.policyNo == search).ToList());
+            }
+            else if (searchBy == "fName")
+            {
+                benef = (db.Beneficiaries.Where(x => x.firstName == search).ToList());
+            }
+            else if (searchBy == "idnumber")
+            {
+                benef = (db.Beneficiaries.Where(x => x.idNo == search).ToList());
+            }
+            else if (searchBy == "coveredby")
+            {
+                benef = (db.Beneficiaries.Where(x => x.coveredby == search).ToList());
+            }
+            return View(benef);
         }
 
         // GET: Beneficiaries/Details/5
@@ -57,6 +74,12 @@ namespace GFS.Controllers.Policies
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "beneficiaryNo,coveredby,idNo,firstName,lastName,relation,split,policyPlan,addAnotherBen,policyNo")] Beneficiary beneficiary)
         {
+            Beneficiary idno = db.Beneficiaries.ToList().Find(x => x.idNo == beneficiary.idNo);
+            if (idno != null)
+            {
+                TempData["responce9"] = "Beneficiary Already Exists, Check ID Number! Covered under: " + idno.coveredby;
+                return RedirectToAction("Create");
+            }
             //if (ModelState.IsValid)
             //{
             if (Session["owner"]!=null)
@@ -98,10 +121,6 @@ namespace GFS.Controllers.Policies
                 if (beneficiary.addAnotherBen == true)
                 {
                     return RedirectToAction("Create", "Beneficiaries");
-                }
-                else if (beneficiary.addAnotherBen == true)
-                {
-                    return RedirectToAction("Create", "Payers");
                 }
                     
             //}

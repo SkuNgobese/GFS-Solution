@@ -1,0 +1,188 @@
+﻿@model GFS.Models.Policies.NewMember
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h4>Policy Holder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dOb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dOb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maritalStat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maritalStat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cellNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cellNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fascimileNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fascimileNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.physicalAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.physicalAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postalAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postalAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateAdded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateAdded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Policyplan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Policyplan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Premium)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Premium)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesPerson)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesPerson)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capturedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capturedby)
+        </dd>
+
+    </dl>
+</div>
+<div align="right">
+    <input type="button" value="View Full Policy Profile" class="btn btn-primary btn-block" onclick="@("window.location.href='" + @Url.Action("Customer_Details", "NewMembers", new { id = Model.policyNo }) + "'");" /><br />
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.policyNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

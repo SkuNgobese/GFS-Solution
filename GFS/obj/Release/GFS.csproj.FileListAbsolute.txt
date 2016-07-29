@@ -1,0 +1,112 @@
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\sb-admin-2.Web.dll.config
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\sb-admin-2.Web.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\sb-admin-2.Web.pdb
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Antlr3.Runtime.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\EntityFramework.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\EntityFramework.SqlServer.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\itextsharp.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Owin.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Owin.Security.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Newtonsoft.Json.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Owin.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Net.Http.Formatting.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Helpers.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Http.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Http.WebHost.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Mvc.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Optimization.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Razor.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.WebPages.Deployment.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.WebPages.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.WebPages.Razor.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\WebActivatorEx.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\WebGrease.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Antlr3.Runtime.pdb
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\EntityFramework.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\EntityFramework.SqlServer.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\itextsharp.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Owin.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Owin.Security.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\Newtonsoft.Json.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Net.Http.Formatting.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Helpers.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Http.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Http.WebHost.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Mvc.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Razor.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.WebPages.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.WebPages.Deployment.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.WebPages.Razor.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\bin\System.Web.Optimization.xml
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\obj\Release\GFS.csproj.GenerateResource.Cache
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\obj\Release\sb-admin-2.Web.dll
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\obj\Release\sb-admin-2.Web.pdb
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\sb-admin-2.Web.dll.config
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\sb-admin-2.Web.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\sb-admin-2.Web.pdb
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Antlr3.Runtime.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\EntityFramework.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\EntityFramework.SqlServer.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\itextsharp.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Owin.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Owin.Security.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Newtonsoft.Json.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Owin.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Net.Http.Formatting.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Helpers.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Http.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Http.WebHost.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Mvc.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Optimization.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Razor.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.WebPages.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.WebPages.Razor.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\WebActivatorEx.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\WebGrease.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Antlr3.Runtime.pdb
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\EntityFramework.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\EntityFramework.SqlServer.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\itextsharp.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Owin.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Owin.Security.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\Newtonsoft.Json.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Net.Http.Formatting.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Helpers.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Http.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Http.WebHost.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Mvc.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Razor.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.WebPages.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.WebPages.Razor.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\bin\System.Web.Optimization.xml
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\obj\Release\GFS.csprojResolveAssemblyReference.cache
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\obj\Release\GFS.Migrations.init.resources
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\obj\Release\GFS.csproj.GenerateResource.Cache
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\obj\Release\sb-admin-2.Web.dll
+C:\Users\Lindo\Desktop\New folder (2)\New folder\GFS\GFS\obj\Release\sb-admin-2.Web.pdb
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\obj\Release\GFS.csprojResolveAssemblyReference.cache
+C:\Users\JUNIOR\Desktop\New folder\GFS\GFS\obj\Release\GFS.Migrations.initial.resources
